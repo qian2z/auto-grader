@@ -1,12 +1,15 @@
-import { Card, Flex, Separator } from "@radix-ui/themes";
+import { Flex, Separator } from "@radix-ui/themes";
+import MultipleSubmissionsDialog from "./MultipleSubmissionsDialog";
 import SingleSubmissionDialog from "./SingleSubmissionDialog";
 
 const GetStartedPage = () => {
   return (
-    <Flex align="center" gap="4" className="h-60">
-      <SingleSubmissionDialog />
-      <Separator orientation="vertical" size="3" />
-      <Card>Multiple Submissions</Card>
+    <Flex align="center" justify="center" p="9" m="9">
+      <Flex align="center" gap="4" className="h-60">
+        <SingleSubmissionDialog />
+        <Separator orientation="vertical" size="3" />
+        <MultipleSubmissionsDialog />
+      </Flex>
     </Flex>
   );
 };

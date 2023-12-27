@@ -6,21 +6,25 @@ import {
   Flex,
   TextArea,
 } from "@radix-ui/themes";
-import { LuType } from "react-icons/lu";
+import { BsFiletypeDocx, BsFiletypePdf } from "react-icons/bs";
 import SubmissionActionsBox from "./SubmissionActionsBox";
 import SubmissionInputBox from "./SubmissionInputBox";
 import SubmissionTriggerCard from "./SubmissionTriggerCard";
+import UploadFilesButton from "./UploadFilesButton";
 
-const SingleSubmissionDialog = () => {
+const MultipleSubmissionsDialog = () => {
   return (
     <DialogRoot>
       <DialogTrigger>
-        <SubmissionTriggerCard title="Single Submission">
-          <LuType size={40} />
+        <SubmissionTriggerCard title="Multiple Submission(s)">
+          <Flex>
+            <BsFiletypePdf size={40} />
+            <BsFiletypeDocx size={40} />
+          </Flex>
         </SubmissionTriggerCard>
       </DialogTrigger>
       <DialogContent size="4">
-        <DialogTitle>Single Submission</DialogTitle>
+        <DialogTitle>Mutiple Submissions</DialogTitle>
         <Flex direction="column" gap="4">
           <SubmissionInputBox title="Essay Title">
             <TextArea
@@ -29,10 +33,7 @@ const SingleSubmissionDialog = () => {
             />
           </SubmissionInputBox>
           <SubmissionInputBox title="Essay Body">
-            <TextArea
-              placeholder="Essay..."
-              className="border-solid border border-gray-300 h-60"
-            />
+            <UploadFilesButton />
           </SubmissionInputBox>
         </Flex>
         <SubmissionActionsBox />
@@ -41,4 +42,4 @@ const SingleSubmissionDialog = () => {
   );
 };
 
-export default SingleSubmissionDialog;
+export default MultipleSubmissionsDialog;
