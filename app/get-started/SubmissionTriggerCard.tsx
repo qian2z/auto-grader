@@ -14,12 +14,12 @@ const SubmissionTriggerCard = ({
         direction="column"
         align="center"
         justify="center"
-        className="w-60 h-44 m-5"
+        className="w-96 h-60 m-5"
       >
-        <Inset clip="padding-box" side="top" pb="current">
+        <Inset clip="padding-box" side="top" pb="current" mb="2">
           {children}
         </Inset>
-        <Text>{title}</Text>
+        <Text size="5">{title}</Text>
       </Flex>
     </Card>
   );

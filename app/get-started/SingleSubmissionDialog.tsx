@@ -16,7 +16,7 @@ const SingleSubmissionDialog = () => {
     <DialogRoot>
       <DialogTrigger>
         <SubmissionTriggerCard title="Single Submission">
-          <LuType size={40} />
+          <LuType size={45} />
         </SubmissionTriggerCard>
       </DialogTrigger>
       <DialogContent size="4">

@@ -18,8 +18,8 @@ const MultipleSubmissionsDialog = () => {
       <DialogTrigger>
         <SubmissionTriggerCard title="Multiple Submission(s)">
           <Flex>
-            <BsFiletypePdf size={40} />
-            <BsFiletypeDocx size={40} />
+            <BsFiletypePdf size={45} />
+            <BsFiletypeDocx size={45} />
           </Flex>
         </SubmissionTriggerCard>
       </DialogTrigger>

@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button, DialogClose, Flex } from "@radix-ui/themes";
 
 const SubmissionActionsBox = () => {
@@ -9,7 +10,10 @@ const SubmissionActionsBox = () => {
         </Button>
       </DialogClose>
       <DialogClose>
-        <Button>Next</Button>
+        <Button>
+          Next
+          <ArrowRightIcon width="16" height="16" />
+        </Button>
       </DialogClose>
     </Flex>
   );
