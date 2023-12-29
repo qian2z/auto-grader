@@ -14,7 +14,7 @@ const SingleSubmissionPage = () => {
           />
           <TextArea placeholder="Essay Body..." className="h-96" />
         </Flex>
-        <Flex>
+        <Flex direction="column" gap="3">
           <GradingOptionsSection />
         </Flex>
       </Flex>
