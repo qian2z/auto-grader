@@ -8,7 +8,11 @@ import {
 } from "@radix-ui/themes";
 import SelectionInputBox from "./SelectionInputBox";
 
-const EssayLevelOption = () => {
+const EssayLevelOption = ({
+  setLevel,
+}: {
+  setLevel: (value: string) => void;
+}) => {
   const essay_levels: { id: number; items: string[]; label?: string }[] = [
     { id: 1, items: ["Primary Level"] },
     { id: 2, items: ["Secondary Level"] },
@@ -44,7 +48,10 @@ const EssayLevelOption = () => {
 
   return (
     <SelectionInputBox title="Essay Level">
-      <SelectRoot defaultValue="Undergraduate Level">
+      <SelectRoot
+        defaultValue="Undergraduate Level"
+        onValueChange={(value) => setLevel(value)}
+      >
         <SelectTrigger />
         <SelectContent>
           {essay_levels.map((level) => (
