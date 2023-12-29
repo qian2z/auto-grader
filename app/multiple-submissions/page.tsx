@@ -1,7 +1,7 @@
 import { TextArea } from "@radix-ui/themes";
 import SubmissionPageLayout from "../components/SubmissionPageLayout";
 
-const SingleSubmissionPage = () => {
+const MultipleSubmissionPage = () => {
   return (
     <SubmissionPageLayout>
       <TextArea placeholder="Essay Body..." className="h-96" />
@@ -9,4 +9,4 @@ const SingleSubmissionPage = () => {
   );
 };
 
-export default SingleSubmissionPage;
+export default MultipleSubmissionPage;
