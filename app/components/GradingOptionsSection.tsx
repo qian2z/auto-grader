@@ -3,6 +3,7 @@ import { useState } from "react";
 import EssayLevelOption from "./EssayLevelOption";
 import EssayTypeOption from "./EssayTypeOption";
 import FeedbackLevelOption from "./FeedbackLevelOption";
+import MinWordCountInput from "./MinWordCountInput";
 import ScoringScaleSelector from "./ScoringScaleSelector";
 
 const GradingOptionsSection = () => {
@@ -13,6 +14,7 @@ const GradingOptionsSection = () => {
       <EssayLevelOption setLevel={setLevel} />
       <EssayTypeOption level={level} />
       <ScoringScaleSelector />
+      <MinWordCountInput />
       <FeedbackLevelOption />
     </>
   );
