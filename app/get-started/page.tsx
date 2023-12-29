@@ -1,28 +1,20 @@
 import { Flex, Separator } from "@radix-ui/themes";
-import { BsFiletypeDocx, BsFiletypePdf } from "react-icons/bs";
+import Link from "next/link";
 import { LuType } from "react-icons/lu";
+import MultipleSubmissionsDialog from "../components/MultipleSubmissionDialog";
 import SubmissionTriggerCard from "../components/SubmissionTriggerCard";
 
 const GetStartedPage = () => {
   return (
     <Flex align="center" justify="center" p="9" m="9">
       <Flex align="center" gap="4">
-        <SubmissionTriggerCard
-          href="/single-submission"
-          title="Single Submission"
-        >
-          <LuType size={45} />
-        </SubmissionTriggerCard>
+        <Link href="/single-submission">
+          <SubmissionTriggerCard title="Single Submission">
+            <LuType size={45} />
+          </SubmissionTriggerCard>
+        </Link>
         <Separator orientation="vertical" size="3" />
-        <SubmissionTriggerCard
-          href="/multiple-submissions"
-          title="Multiple Submission(s)"
-        >
-          <Flex>
-            <BsFiletypePdf size={45} />
-            <BsFiletypeDocx size={45} />
-          </Flex>
-        </SubmissionTriggerCard>
+        <MultipleSubmissionsDialog />
       </Flex>
     </Flex>
   );
