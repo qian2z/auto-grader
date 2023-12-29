@@ -1,4 +1,5 @@
 import { Flex, TextArea } from "@radix-ui/themes";
+import GradingOptionsSection from "../components/GradingOptionsSection";
 import SubmissionActionsBox from "../components/SubmissionActionsBox";
 
 const SingleSubmissionPage = () => {
@@ -13,7 +14,9 @@ const SingleSubmissionPage = () => {
           />
           <TextArea placeholder="Essay Body..." className="h-96" />
         </Flex>
-        <Flex>options box</Flex>
+        <Flex>
+          <GradingOptionsSection />
+        </Flex>
       </Flex>
       <Flex justify="end">
         <SubmissionActionsBox href="/" />
