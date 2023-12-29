@@ -1,8 +1,8 @@
 import { Flex, Separator } from "@radix-ui/themes";
 import Link from "next/link";
 import { LuType } from "react-icons/lu";
-import MultipleSubmissionsDialog from "../components/MultipleSubmissionDialog";
-import SubmissionTriggerCard from "../components/SubmissionTriggerCard";
+import MultipleSubmissionsDialog from "./MultipleSubmissionDialog";
+import SubmissionTriggerCard from "./SubmissionTriggerCard";
 
 const GetStartedPage = () => {
   return (
