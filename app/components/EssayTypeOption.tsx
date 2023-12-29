@@ -6,7 +6,7 @@ import {
   SelectTrigger,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
-import { types } from "../index/types";
+import { essay_types } from "../index/types";
 import SelectionInputBox from "./SelectionInputBox";
 
 const EssayTypeOption = ({ level }: { level: string }) => {
@@ -15,12 +15,12 @@ const EssayTypeOption = ({ level }: { level: string }) => {
   );
 
   useEffect(() => {
-    if (types[level] !== null) {
-      setSelectedType(types[level]![0]);
+    if (essay_types[level] !== null) {
+      setSelectedType(essay_types[level]![0]);
     }
   }, [level]);
 
-  if (types[level] === null) return null;
+  if (essay_types[level] === null) return null;
 
   return (
     <SelectionInputBox title="Essay Type">
@@ -31,7 +31,7 @@ const EssayTypeOption = ({ level }: { level: string }) => {
         <SelectTrigger />
         <SelectContent>
           <SelectGroup>
-            {types[level]?.map((type) => (
+            {essay_types[level]?.map((type) => (
               <SelectItem key={type} value={type}>
                 {type}
               </SelectItem>

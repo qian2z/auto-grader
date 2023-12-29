@@ -1,4 +1,4 @@
-export const types: { [level: string]: string[] | null } = {
+export const essay_types: { [level: string]: string[] | null } = {
   "Primary Level": [
     "Narrative",
     "Descriptive",
