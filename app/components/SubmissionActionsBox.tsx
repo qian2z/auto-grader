@@ -1,20 +1,19 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button, DialogClose, Flex } from "@radix-ui/themes";
+import Link from "next/link";
 
-const SubmissionActionsBox = () => {
+const SubmissionActionsBox = ({ href }: { href: string }) => {
   return (
     <Flex gap="3" mt="5" justify="end">
-      <DialogClose>
-        <Button variant="soft" color="gray">
-          Cancel
-        </Button>
-      </DialogClose>
-      <DialogClose>
+      <Button variant="soft" color="gray">
+        Back
+      </Button>
+      <Link href={href}>
         <Button>
-          Next
+          Submit
           <ArrowRightIcon width="16" height="16" />
         </Button>
-      </DialogClose>
+      </Link>
     </Flex>
   );
 };
