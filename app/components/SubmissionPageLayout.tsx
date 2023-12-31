@@ -20,7 +20,7 @@ const SubmissionPageLayout = ({ children }: { children: ReactNode }) => {
         </Flex>
       </Flex>
       <Flex justify="end">
-        <SubmissionActionsBox href="/" />
+        <SubmissionActionsBox href="/results-review" />
       </Flex>
     </Flex>
   );
