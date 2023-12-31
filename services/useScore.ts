@@ -5,7 +5,7 @@ const scoreService = new APIClient("");
 
 const useScore = (title: string, body: string) => {
   return useQuery<FetchResponse, Error>({
-    queryKey: ["results", { title, body }],
+    queryKey: ["score", { title, body }],
     queryFn: () => scoreService.getScore(title, body),
   });
 };
