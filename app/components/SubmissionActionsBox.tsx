@@ -10,14 +10,12 @@ const SubmissionActionsBox = ({ href }: { href: string }) => {
           Back
         </Button>
       </Link>
-      <Link href={href}>
-        <Button>
-          <Flex justify="center" align="center">
-            <Text>Submit</Text>
-            <BsCheck size={25} />
-          </Flex>
-        </Button>
-      </Link>
+      <Button>
+        <Flex justify="center" align="center">
+          <Text>Submit</Text>
+          <BsCheck size={25} />
+        </Flex>
+      </Button>
     </Flex>
   );
 };
