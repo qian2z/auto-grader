@@ -6,7 +6,7 @@ import {
   SelectRoot,
   SelectTrigger,
 } from "@radix-ui/themes";
-import { essay_levels } from "../index/levels";
+import { essay_levels } from "../../index/levels";
 import SelectionInputBox from "./SelectionInputBox";
 
 const EssayLevelOption = ({

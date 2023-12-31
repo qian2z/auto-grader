@@ -6,7 +6,7 @@ import {
   SelectTrigger,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
-import { essay_types } from "../index/types";
+import { essay_types } from "../../index/types";
 import SelectionInputBox from "./SelectionInputBox";
 
 const EssayTypeOption = ({ level }: { level: string }) => {
@@ -25,6 +25,7 @@ const EssayTypeOption = ({ level }: { level: string }) => {
   return (
     <SelectionInputBox title="Essay Type">
       <SelectRoot
+        defaultValue="Research"
         value={selectedType}
         onValueChange={(value) => setSelectedType(value)}
       >

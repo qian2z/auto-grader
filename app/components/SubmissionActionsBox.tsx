@@ -2,7 +2,7 @@ import { Button, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { BsCheck } from "react-icons/bs";
 
-const SubmissionActionsBox = ({ href }: { href: string }) => {
+const SubmissionActionsBox = () => {
   return (
     <Flex gap="3" mt="5" justify="end">
       <Link href={"/get-started"}>

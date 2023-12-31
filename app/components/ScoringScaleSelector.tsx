@@ -5,7 +5,7 @@ import {
   SelectRoot,
   SelectTrigger,
 } from "@radix-ui/themes";
-import { scoring_scales } from "../index/scales";
+import { scoring_scales } from "../../index/scales";
 import SelectionInputBox from "./SelectionInputBox";
 
 const ScoringScaleSelector = () => {

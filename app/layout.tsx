@@ -3,6 +3,7 @@ import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "./NavBar";
+import QueryClientProvider from "./QueryClientProvider";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,12 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Theme accentColor="sky">
-          <NavBar />
-          <Container>
-            <main>{children}</main>
-          </Container>
-        </Theme>
+        <QueryClientProvider>
+          <Theme accentColor="sky">
+            <NavBar />
+            <Container>
+              <main>{children}</main>
+            </Container>
+          </Theme>
+        </QueryClientProvider>
       </body>
     </html>
   );
