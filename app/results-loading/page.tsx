@@ -1,6 +1,6 @@
 "use client";
-import useFeedback from "@/services/useFeedback";
-import useScore from "@/services/useScore";
+import useFeedback from "@/hooks/useFeedback";
+import useScore from "@/hooks/useScore";
 import { useRouter } from "next/navigation";
 import useResultDataStore from "../resultStore";
 

@@ -1,5 +1,5 @@
 "use client";
-import { extractNumbersFromString } from "@/services/extractNumbers";
+import { extractNumbersFromString } from "@/utils/extractNumbers";
 import { useEffect, useState } from "react";
 import useResultDataStore from "../resultStore";
 import useSubmissionDataStore from "../submissionStore";

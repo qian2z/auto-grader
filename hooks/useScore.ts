@@ -1,17 +1,17 @@
 import useSubmissionDataStore from "@/app/submissionStore";
 import { useQuery } from "@tanstack/react-query";
-import APIClient, { FetchResponse } from "./api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
 
 const scoreService = new APIClient("");
 
-const useFeedback = () => {
+const useScore = () => {
   const submissionData = useSubmissionDataStore((s) => s.data);
 
   return useQuery<FetchResponse, Error>({
-    queryKey: ["feedback", { submissionData }],
+    queryKey: ["score", { submissionData }],
     queryFn: () =>
-      scoreService.getFeedback(submissionData.title, submissionData.body),
+      scoreService.getScore(submissionData.title, submissionData.body),
   });
 };
 
-export default useFeedback;
+export default useScore;
