@@ -1,7 +1,32 @@
+"use client";
 import { Flex, Text } from "@radix-ui/themes";
+import mammoth from "mammoth";
+import { useState } from "react";
 import { LuFileStack } from "react-icons/lu";
 
 const UploadFilesButton = () => {
+  const [extractedText, setExtractedText] = useState<string[]>([]);
+
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = event.target.files;
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        try {
+          const arrayBuffer = await file.arrayBuffer();
+          const result = await mammoth.extractRawText({ arrayBuffer });
+          const text = result.value;
+          console.log(`Text from file ${file.name}:`, text);
+          setExtractedText((prevExtractedText) => [...prevExtractedText, text]);
+        } catch (error) {
+          console.error("Error reading .docx file:", error);
+        }
+      }
+    }
+  };
+
   return (
     <Flex
       direction="column"
@@ -15,7 +40,7 @@ const UploadFilesButton = () => {
         htmlFor="file-upload"
         className="block text-center text-gray-600 font-semibold text-lg cursor-pointer"
       >
-        Click Here to Upload .pdf or .docx File(s)
+        Click Here to Upload .docx File(s)
       </label>
       <input
         type="file"
@@ -23,6 +48,7 @@ const UploadFilesButton = () => {
         multiple
         accept=".pdf, .docx"
         className="hidden"
+        onChange={handleFileChange}
       />
       <label htmlFor="file-upload" className="cursor-pointer">
         <Flex justify="center" align="center">

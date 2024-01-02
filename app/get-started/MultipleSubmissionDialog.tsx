@@ -36,7 +36,7 @@ const MultipleSubmissionsDialog = () => {
           </DialogClose>
           <DialogClose>
             <Link href="/multiple-submissions">
-              <Button>Next</Button>
+              <Button type="submit">Next</Button>
             </Link>
           </DialogClose>
         </Flex>
