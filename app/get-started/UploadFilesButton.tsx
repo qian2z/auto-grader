@@ -3,9 +3,11 @@ import { Flex, Text } from "@radix-ui/themes";
 import mammoth from "mammoth";
 import { useState } from "react";
 import { LuFileStack } from "react-icons/lu";
+import useSubmissionsDataStore from "../submissionsStore";
 
 const UploadFilesButton = () => {
   const [extractedText, setExtractedText] = useState<string[]>([]);
+  const setMultipleBody = useSubmissionsDataStore((s) => s.setBody);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -26,6 +28,8 @@ const UploadFilesButton = () => {
       }
     }
   };
+
+  setMultipleBody(extractedText);
 
   return (
     <Flex
