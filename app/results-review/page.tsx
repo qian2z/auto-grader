@@ -1,4 +1,5 @@
 "use client";
+import { extractNumbersFromString } from "@/services/extractNumbers";
 import { useEffect, useState } from "react";
 import useResultDataStore from "../resultStore";
 import useSubmissionDataStore from "../submissionStore";
@@ -10,6 +11,7 @@ const ResultReviewPage = () => {
   const [feedback, setFeedback] = useState("");
 
   const storedScore = useResultDataStore((s) => s.data.score);
+  const scoreNumber = extractNumbersFromString(storedScore);
   const storedFeedback = useResultDataStore((s) => s.data.feedback);
   const storedTitle = useSubmissionDataStore((s) => s.data.title);
   const storedBody = useSubmissionDataStore((s) => s.data.body);
@@ -17,7 +19,7 @@ const ResultReviewPage = () => {
   useEffect(() => {
     setTitle(storedTitle);
     setBody(storedBody);
-    setScore(storedScore);
+    setScore("" + scoreNumber[0]!);
     setFeedback(storedFeedback);
   }, []);
 
