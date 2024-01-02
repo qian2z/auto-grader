@@ -1,29 +1,30 @@
 "use client";
 import { Flex, TextArea } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
-import { ReactNode, useRef } from "react";
+import { FormEvent, useRef } from "react";
 import GradingOptionsSection from "../components/GradingOptionsSection";
 import SubmissionActionsBox from "../components/SubmissionActionsBox";
-import useSubmissionDataStore from "../store";
+import useSubmissionDataStore from "../submissionStore";
 
-const SingleSubmissionPage = ({ children }: { children: ReactNode }) => {
+const SingleSubmissionPage = () => {
+  const router = useRouter();
+
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
   const setEssayTitle = useSubmissionDataStore((s) => s.setTitle);
   const setEssayBody = useSubmissionDataStore((s) => s.setBody);
-  const router = useRouter();
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (titleRef.current && bodyRef.current) {
+      setEssayTitle(titleRef.current.value);
+      setEssayBody(bodyRef.current.value);
+      router.push("/results-loading");
+    }
+  };
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        if (titleRef.current && bodyRef.current) {
-          setEssayTitle(titleRef.current.value);
-          setEssayBody(bodyRef.current.value);
-          router.push("/results-review");
-        }
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <Flex direction="column" m="5">
         <Flex gap="4" justify="center" align="center">
           <Flex direction="column" gap="3" className="w-4/5">

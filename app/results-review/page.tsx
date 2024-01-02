@@ -1,26 +1,25 @@
 "use client";
-import useFeedback from "@/services/useFeedback";
-import useScore from "@/services/useScore";
-import useSubmissionDataStore from "../store";
+import { useEffect, useState } from "react";
+import useResultDataStore from "../resultStore";
+import useSubmissionDataStore from "../submissionStore";
 
 const ResultReviewPage = () => {
-  const title = useSubmissionDataStore((e) => e.data.title);
-  const body = useSubmissionDataStore((e) => e.data.body);
-  const {
-    data: scoreResult,
-    isLoading: scoreLoading,
-    error: scoreError,
-  } = useScore(title, body);
-  const {
-    data: feedbackResult,
-    isLoading: feedbackLoading,
-    error: feedbackError,
-  } = useFeedback(title, body);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [score, setScore] = useState("");
+  const [feedback, setFeedback] = useState("");
 
-  if (scoreLoading || feedbackLoading) return <p>Loading...</p>;
+  const storedScore = useResultDataStore((s) => s.data.score);
+  const storedFeedback = useResultDataStore((s) => s.data.feedback);
+  const storedTitle = useSubmissionDataStore((s) => s.data.title);
+  const storedBody = useSubmissionDataStore((s) => s.data.body);
 
-  const score = scoreResult?.choices[0].message.content!;
-  const feedback = feedbackResult?.choices[0].message.content;
+  useEffect(() => {
+    setTitle(storedTitle);
+    setBody(storedBody);
+    setScore(storedScore);
+    setFeedback(storedFeedback);
+  }, []);
 
   return (
     <div>

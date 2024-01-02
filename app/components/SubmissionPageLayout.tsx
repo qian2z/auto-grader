@@ -1,7 +1,7 @@
 import { Flex, TextArea } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { ReactNode, useRef } from "react";
-import useSubmissionDataStore from "../store";
+import useSubmissionDataStore from "../submissionStore";
 import GradingOptionsSection from "./GradingOptionsSection";
 import SubmissionActionsBox from "./SubmissionActionsBox";
 

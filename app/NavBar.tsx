@@ -6,9 +6,13 @@ import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import { IoMdPerson } from "react-icons/io";
 import { TfiWrite } from "react-icons/tfi";
+import useResultDataStore from "./resultStore";
+import useSubmissionDataStore from "./submissionStore";
 
 const NavBar = () => {
   const currentPath = usePathname();
+  const clearSubmission = useSubmissionDataStore((s) => s.clearSubmission);
+  const clearResult = useResultDataStore((s) => s.clearResult);
 
   return (
     <nav className="border-b mb-5 px-5 h-14 py-2">
@@ -16,7 +20,13 @@ const NavBar = () => {
         <Flex gap="4" justify="between">
           <Flex></Flex>
           <Flex mt="2">
-            <Link href="/">
+            <Link
+              href="/"
+              onClick={() => {
+                clearSubmission();
+                clearResult();
+              }}
+            >
               <Flex gap="3" justify="center" align="center">
                 <TfiWrite size={25} />
                 <Text weight="bold" size="5">
