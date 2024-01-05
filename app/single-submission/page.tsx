@@ -26,7 +26,7 @@ const SingleSubmissionPage = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Flex direction="column" m="5">
-        <Flex gap="4" justify="center" align="center">
+        <Flex gap="6" justify="center" align="start">
           <Flex direction="column" gap="3" className="w-4/5">
             <TextArea
               ref={titleRef}

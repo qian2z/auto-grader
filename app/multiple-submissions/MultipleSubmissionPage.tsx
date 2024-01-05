@@ -14,7 +14,7 @@ import GradingOptionsSection from "../components/GradingOptionsSection";
 import SubmissionActionsBox from "../components/SubmissionActionsBox";
 import useSubmissionsDataStore from "../submissionsStore";
 
-const MultipleSubmissionPage = () => {
+export const MultipleSubmissionPage = () => {
   const [multipleBody, setMultipleBody] = useState<string[]>([]);
   const [multipleName, setMultipleName] = useState<string[]>([]);
   const storedMultipleBody = useSubmissionsDataStore((s) => s.data.body);
@@ -29,7 +29,7 @@ const MultipleSubmissionPage = () => {
 
   return (
     <Flex direction="column" m="5">
-      <Flex gap="6" justify="center" align="start">
+      <Flex gap="4" justify="center" align="center">
         <Flex direction="column" gap="3" className="w-4/5">
           <TextArea
             placeholder="Essay Title..."
@@ -37,7 +37,7 @@ const MultipleSubmissionPage = () => {
             size="3"
           />
           <Flex>
-            <TabsRoot defaultValue={multipleName[0]} className="w-full">
+            <TabsRoot defaultValue={multipleName[0]}>
               <TabsList>
                 {multipleName.map((name) => (
                   <TabsTrigger value={name} key={name}>
@@ -48,9 +48,7 @@ const MultipleSubmissionPage = () => {
               <Box m="3">
                 {multipleName.map((name, index) => (
                   <TabsContent value={name} key={name}>
-                    <Box>
-                      <Text size="3">{multipleBody[index]}</Text>
-                    </Box>
+                    <Text size="3">{multipleBody[index]}</Text>
                   </TabsContent>
                 ))}
               </Box>
@@ -67,5 +65,3 @@ const MultipleSubmissionPage = () => {
     </Flex>
   );
 };
-
-export default MultipleSubmissionPage;

@@ -7,13 +7,17 @@ import useSubmissionsDataStore from "../submissionsStore";
 
 const UploadFilesButton = () => {
   const [extractedText, setExtractedText] = useState<string[]>([]);
+  const [filename, setFilename] = useState<string[]>([]);
+  const [fileLength, setFileLength] = useState(0);
   const setMultipleBody = useSubmissionsDataStore((s) => s.setBody);
+  const setMultipleName = useSubmissionsDataStore((s) => s.setName);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const files = event.target.files;
     if (files) {
+      setFileLength(files.length);
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         try {
@@ -22,6 +26,7 @@ const UploadFilesButton = () => {
           const text = result.value;
           console.log(`Text from file ${file.name}:`, text);
           setExtractedText((prevExtractedText) => [...prevExtractedText, text]);
+          setFilename((prevFilename) => [...prevFilename, "" + (i + 1)]);
         } catch (error) {
           console.error("Error reading .docx file:", error);
         }
@@ -30,6 +35,7 @@ const UploadFilesButton = () => {
   };
 
   setMultipleBody(extractedText);
+  setMultipleName(filename);
 
   return (
     <Flex
@@ -50,9 +56,9 @@ const UploadFilesButton = () => {
         type="file"
         id="file-upload"
         multiple
-        accept=".pdf, .docx"
+        accept=".docx"
         className="hidden"
-        onChange={handleFileChange}
+        onChangeCapture={handleFileChange}
       />
       <label htmlFor="file-upload" className="cursor-pointer">
         <Flex justify="center" align="center">
@@ -65,7 +71,7 @@ const UploadFilesButton = () => {
           >
             <LuFileStack size={30} />
             <Text color="gray" size="3" mt="3">
-              1 File(s) Selected
+              {fileLength} File(s) Selected
             </Text>
           </Flex>
         </Flex>
