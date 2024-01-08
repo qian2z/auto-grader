@@ -4,7 +4,7 @@ import SelectionInputBox from "./SelectionInputBox";
 const FeedbackLevelOption = () => {
   return (
     <SelectionInputBox title="Feedback Detail Level">
-      <RadioGroup.Root defaultValue="2">
+      <RadioGroup.Root defaultValue="1">
         <Flex gap="2" direction="column">
           <Text as="label" size="2">
             <Flex gap="2">
