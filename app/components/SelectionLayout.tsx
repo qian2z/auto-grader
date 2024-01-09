@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
-const SelectionInputBox = ({ title, children }: Props) => {
+const SelectionLayout = ({ title, children }: Props) => {
   return (
     <Flex direction="column" gap="1">
       <Text as="label" size="3" weight="bold">
@@ -17,4 +17,4 @@ const SelectionInputBox = ({ title, children }: Props) => {
   );
 };
 
-export default SelectionInputBox;
+export default SelectionLayout;

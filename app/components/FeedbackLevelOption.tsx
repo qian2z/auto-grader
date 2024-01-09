@@ -1,9 +1,9 @@
 import { Flex, RadioGroup, Text } from "@radix-ui/themes";
-import SelectionInputBox from "./SelectionInputBox";
+import SelectionLayout from "./SelectionLayout";
 
 const FeedbackLevelOption = () => {
   return (
-    <SelectionInputBox title="Feedback Detail Level">
+    <SelectionLayout title="Feedback Detail Level">
       <RadioGroup.Root defaultValue="1">
         <Flex gap="2" direction="column">
           <Text as="label" size="2">
@@ -24,7 +24,7 @@ const FeedbackLevelOption = () => {
           </Text>
         </Flex>
       </RadioGroup.Root>
-    </SelectionInputBox>
+    </SelectionLayout>
   );
 };
 

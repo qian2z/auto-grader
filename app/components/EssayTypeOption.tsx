@@ -7,7 +7,7 @@ import {
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { essay_types } from "../../index/types";
-import SelectionInputBox from "./SelectionInputBox";
+import SelectionLayout from "./SelectionLayout";
 
 const EssayTypeOption = ({ level }: { level: string }) => {
   const [selectedType, setSelectedType] = useState<string | undefined>(
@@ -23,7 +23,7 @@ const EssayTypeOption = ({ level }: { level: string }) => {
   if (essay_types[level] === null) return null;
 
   return (
-    <SelectionInputBox title="Essay Type">
+    <SelectionLayout title="Essay Type">
       <SelectRoot
         defaultValue="Research"
         value={selectedType}
@@ -40,7 +40,7 @@ const EssayTypeOption = ({ level }: { level: string }) => {
           </SelectGroup>
         </SelectContent>
       </SelectRoot>
-    </SelectionInputBox>
+    </SelectionLayout>
   );
 };
 

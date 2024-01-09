@@ -6,11 +6,11 @@ import {
   SelectTrigger,
 } from "@radix-ui/themes";
 import { scoring_scales } from "../../index/scales";
-import SelectionInputBox from "./SelectionInputBox";
+import SelectionLayout from "./SelectionLayout";
 
 const ScoringScaleSelector = () => {
   return (
-    <SelectionInputBox title="Scoring Scale">
+    <SelectionLayout title="Scoring Scale">
       <SelectRoot defaultValue="0 - 9">
         <SelectTrigger />
         <SelectContent>
@@ -23,7 +23,7 @@ const ScoringScaleSelector = () => {
           </SelectGroup>
         </SelectContent>
       </SelectRoot>
-    </SelectionInputBox>
+    </SelectionLayout>
   );
 };
 
