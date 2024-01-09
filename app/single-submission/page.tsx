@@ -13,12 +13,14 @@ const SingleSubmissionPage = () => {
   const bodyRef = useRef<HTMLTextAreaElement>(null);
   const setEssayTitle = useSubmissionsDataStore((s) => s.setTitle);
   const setEssayBody = useSubmissionsDataStore((s) => s.setBody);
+  const setEssayName = useSubmissionsDataStore((s) => s.setName);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleRef.current && bodyRef.current) {
       setEssayTitle(titleRef.current.value);
       setEssayBody([bodyRef.current.value]);
+      setEssayName(["1"]);
       router.push("/results-loading");
     }
   };
