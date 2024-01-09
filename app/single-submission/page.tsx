@@ -4,21 +4,21 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useRef } from "react";
 import GradingOptionsSection from "../components/GradingOptionsSection";
 import SubmissionActionsBox from "../components/SubmissionActionsBox";
-import useSubmissionDataStore from "../submissionStore";
+import useSubmissionsDataStore from "../submissionsStore";
 
 const SingleSubmissionPage = () => {
   const router = useRouter();
 
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
-  const setEssayTitle = useSubmissionDataStore((s) => s.setTitle);
-  const setEssayBody = useSubmissionDataStore((s) => s.setBody);
+  const setEssayTitle = useSubmissionsDataStore((s) => s.setTitle);
+  const setEssayBody = useSubmissionsDataStore((s) => s.setBody);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleRef.current && bodyRef.current) {
       setEssayTitle(titleRef.current.value);
-      setEssayBody(bodyRef.current.value);
+      setEssayBody([bodyRef.current.value]);
       router.push("/results-loading");
     }
   };
