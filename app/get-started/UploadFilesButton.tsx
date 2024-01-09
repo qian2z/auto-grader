@@ -7,10 +7,12 @@ import useSubmissionsDataStore from "../submissionsStore";
 
 const UploadFilesButton = () => {
   const [extractedText, setExtractedText] = useState<string[]>([]);
-  const [filename, setFilename] = useState<string[]>([]);
+  const [fileName, setFileName] = useState<string[]>([]);
+  const [fileNumber, setFileNumber] = useState<string[]>([]);
   const [fileLength, setFileLength] = useState(0);
   const setMultipleBody = useSubmissionsDataStore((s) => s.setBody);
   const setMultipleName = useSubmissionsDataStore((s) => s.setName);
+  const setMultipleNumber = useSubmissionsDataStore((s) => s.setNumber);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -24,9 +26,9 @@ const UploadFilesButton = () => {
           const arrayBuffer = await file.arrayBuffer();
           const result = await mammoth.extractRawText({ arrayBuffer });
           const text = result.value;
-          console.log(`Text from file ${file.name}:`, text);
           setExtractedText((prevExtractedText) => [...prevExtractedText, text]);
-          setFilename((prevFilename) => [...prevFilename, "" + (i + 1)]);
+          setFileName((prevFileName) => [...prevFileName, file.name]);
+          setFileNumber((prevFileNumber) => [...prevFileNumber, "" + (i + 1)]);
         } catch (error) {
           console.error("Error reading .docx file:", error);
         }
@@ -35,7 +37,8 @@ const UploadFilesButton = () => {
   };
 
   setMultipleBody(extractedText);
-  setMultipleName(filename);
+  setMultipleName(fileName);
+  setMultipleNumber(fileNumber);
 
   return (
     <Flex

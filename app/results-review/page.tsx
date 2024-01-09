@@ -21,45 +21,50 @@ const ResultReviewPage = () => {
   const [scores, setScores] = useState<string[]>([]);
   const [feedbacks, setFeedbacks] = useState<string[]>([]);
   const [multipleName, setMultipleName] = useState<string[]>([]);
+  const [multipleNumber, setMultipleNumber] = useState<string[]>([]);
 
   const storedTitle = useSubmissionsDataStore((s) => s.data.title);
   const storedBody = useSubmissionsDataStore((s) => s.data.body);
-  const storedFilename = useSubmissionsDataStore((s) => s.data.name);
+
   const storedScore = useResultsDataStore((s) => s.data.score);
   const scoreNumber = storedScore.map((score) =>
     extractNumbersFromString(score)
   );
   const storedFeedback = useResultsDataStore((s) => s.data.feedback);
+  const storedFileName = useSubmissionsDataStore((s) => s.data.name);
+  const storedFileNumber = useSubmissionsDataStore((s) => s.data.number);
 
   useEffect(() => {
     setTitle(storedTitle);
     setBodies(storedBody);
     setScores(scoreNumber.map((score) => "" + score[0]!));
     setFeedbacks(storedFeedback);
-    setMultipleName(storedFilename);
+    setMultipleName(storedFileName);
+    setMultipleNumber(storedFileNumber);
   }, []);
 
-  if (multipleName[0] === undefined) return null;
+  if (multipleNumber[0] === undefined) return null;
 
   return (
     <Flex direction="column" gap="3">
       <Flex>
-        <TabsRoot defaultValue={multipleName[0]} className="w-full">
+        <TabsRoot defaultValue={multipleNumber[0]} className="w-full">
           <TabsList>
-            {multipleName.map((name) => (
+            {multipleNumber.map((name) => (
               <TabsTrigger value={name} key={name}>
                 {name}
               </TabsTrigger>
             ))}
           </TabsList>
           <Box m="3">
-            {multipleName.map((name, index) => (
+            {multipleNumber.map((name, index) => (
               <TabsContent value={name} key={name}>
                 <ResultBox
                   title={title}
                   body={bodies[index]}
                   score={scores[index]}
                   feedback={feedbacks[index]}
+                  filename={multipleName[index]}
                 />
               </TabsContent>
             ))}

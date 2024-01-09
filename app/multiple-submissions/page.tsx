@@ -11,6 +11,7 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import FileNameBox from "../components/FileNameBox";
 import GradingOptionsSection from "../components/GradingOptionsSection";
 import SubmissionActionsBox from "../components/SubmissionActionsBox";
 import useSubmissionsDataStore from "../submissionsStore";
@@ -21,13 +22,16 @@ const MultipleSubmissionPage = () => {
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const [multipleBody, setMultipleBody] = useState<string[]>([]);
   const [multipleName, setMultipleName] = useState<string[]>([]);
+  const [multipleNumber, setMultipleNumber] = useState<string[]>([]);
   const setEssayTitle = useSubmissionsDataStore((s) => s.setTitle);
   const storedMultipleBody = useSubmissionsDataStore((s) => s.data.body);
-  const storedFilename = useSubmissionsDataStore((s) => s.data.name);
+  const storedFileName = useSubmissionsDataStore((s) => s.data.name);
+  const storedFileNumber = useSubmissionsDataStore((s) => s.data.number);
 
   useEffect(() => {
     setMultipleBody(storedMultipleBody);
-    setMultipleName(storedFilename);
+    setMultipleName(storedFileName);
+    setMultipleNumber(storedFileNumber);
   }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -38,7 +42,7 @@ const MultipleSubmissionPage = () => {
     }
   };
 
-  if (multipleName[0] === undefined) return null;
+  if (multipleNumber[0] === undefined) return null;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -52,20 +56,21 @@ const MultipleSubmissionPage = () => {
               size="3"
             />
             <Flex>
-              <TabsRoot defaultValue={multipleName[0]} className="w-full">
+              <TabsRoot defaultValue={multipleNumber[0]} className="w-full">
                 <TabsList>
-                  {multipleName.map((name) => (
+                  {multipleNumber.map((name) => (
                     <TabsTrigger value={name} key={name}>
                       {name}
                     </TabsTrigger>
                   ))}
                 </TabsList>
                 <Box m="3">
-                  {multipleName.map((name, index) => (
+                  {multipleNumber.map((name, index) => (
                     <TabsContent value={name} key={name}>
-                      <Box>
+                      <Flex direction="column" gap="3">
+                        <FileNameBox filename={multipleName[index]} />
                         <Text size="3">{multipleBody[index]}</Text>
-                      </Box>
+                      </Flex>
                     </TabsContent>
                   ))}
                 </Box>

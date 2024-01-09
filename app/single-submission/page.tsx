@@ -14,13 +14,15 @@ const SingleSubmissionPage = () => {
   const setEssayTitle = useSubmissionsDataStore((s) => s.setTitle);
   const setEssayBody = useSubmissionsDataStore((s) => s.setBody);
   const setEssayName = useSubmissionsDataStore((s) => s.setName);
+  const setEssayNumber = useSubmissionsDataStore((s) => s.setNumber);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleRef.current && bodyRef.current) {
       setEssayTitle(titleRef.current.value);
       setEssayBody([bodyRef.current.value]);
-      setEssayName(["1"]);
+      setEssayName(["Single Submission"]);
+      setEssayNumber(["1"]);
       router.push("/results-loading");
     }
   };
@@ -40,6 +42,7 @@ const SingleSubmissionPage = () => {
               ref={bodyRef}
               placeholder="Essay Body..."
               className="h-96"
+              size="3"
             />
           </Flex>
           <Flex direction="column" gap="5">

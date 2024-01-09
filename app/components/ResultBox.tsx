@@ -1,16 +1,19 @@
 import { Badge, Flex, Separator, Text, TextArea } from "@radix-ui/themes";
+import FileNameBox from "./FileNameBox";
 
 interface Props {
   title: string;
   body: string;
   score: string;
   feedback: string;
+  filename: string;
 }
 
-const ResultBox = ({ title, body, score, feedback }: Props) => {
+const ResultBox = ({ title, body, score, feedback, filename }: Props) => {
   return (
     <Flex gap="6" justify="center" align="start" m="5">
       <Flex direction="column" gap="3" className="w-full">
+        <FileNameBox filename={filename} />
         <TextArea
           value={title}
           className="h-24 font-semibold"
