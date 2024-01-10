@@ -1,11 +1,4 @@
-import {
-  Box,
-  Flex,
-  TabsContent,
-  TabsList,
-  TabsRoot,
-  TabsTrigger,
-} from "@radix-ui/themes";
+import { Box, Flex, TabsList, TabsRoot, TabsTrigger } from "@radix-ui/themes";
 import { ReactNode } from "react";
 
 interface Props {

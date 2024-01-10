@@ -12,7 +12,6 @@ import classnames from "classnames";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import { FaUser } from "react-icons/fa";
 import { MdLogin, MdLogout } from "react-icons/md";

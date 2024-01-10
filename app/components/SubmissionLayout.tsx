@@ -1,4 +1,4 @@
-import { Heading, Textarea } from "@chakra-ui/react";
+import { Textarea } from "@chakra-ui/react";
 import { Flex } from "@radix-ui/themes";
 import { FormEvent, ReactNode, RefObject } from "react";
 import GradingOptionsSection from "./GradingOptionsSection";
