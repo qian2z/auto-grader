@@ -36,7 +36,7 @@ const ResultLoadingPage = () => {
 
   if (scoreLoading || feedbackLoading) return <ResultSkeleton />;
 
-  return null;
+  return <ResultSkeleton />;
 };
 
 export default ResultLoadingPage;
