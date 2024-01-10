@@ -23,7 +23,6 @@ import useResultsDataStore from "./resultsStore";
 import useSubmissionsDataStore from "./submissionsStore";
 
 const NavBar = () => {
-  const currentPath = usePathname();
   const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
   const clearResult = useResultsDataStore((s) => s.clearResult);
 
