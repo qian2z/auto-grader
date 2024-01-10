@@ -1,7 +1,6 @@
-import { Flex } from "@radix-ui/themes";
+import { Box, Flex, Text } from "@radix-ui/themes";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import SelectionLayout from "./SelectionLayout";
 import SubmissionActionsBox from "./SubmissionActionsBox";
 
 const SubmissionSkeleton = () => {
@@ -22,11 +21,14 @@ const SubmissionSkeleton = () => {
         </Flex>
         <Flex direction="column" gap="5">
           {selections.map((selection) => (
-            <SelectionLayout
-              key={selection.id}
-              title={selection.label}
-              children={<Skeleton count={selection.count} />}
-            />
+            <Flex direction="column" gap="1" key={selection.id}>
+              <Text as="label" size="3" weight="bold">
+                {selection.label}
+              </Text>
+              <Box ml="3">
+                <Skeleton count={selection.count} />
+              </Box>
+            </Flex>
           ))}
         </Flex>
       </Flex>

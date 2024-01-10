@@ -1,18 +1,33 @@
 "use client";
-import { Container, Flex, Text } from "@radix-ui/themes";
+import {
+  Container,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  Flex,
+  Text,
+} from "@radix-ui/themes";
 import classnames from "classnames";
+import { Session } from "next-auth";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
-import { IoMdPerson } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
+import { MdLogin, MdLogout } from "react-icons/md";
 import { TfiWrite } from "react-icons/tfi";
-import useSubmissionsDataStore from "./submissionsStore";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import useResultsDataStore from "./resultsStore";
+import useSubmissionsDataStore from "./submissionsStore";
 
 const NavBar = () => {
   const currentPath = usePathname();
   const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
   const clearResult = useResultsDataStore((s) => s.clearResult);
+
+  const { status, data: session } = useSession();
 
   return (
     <nav className="border-b mb-5 px-5 h-14 py-2">
@@ -35,10 +50,7 @@ const NavBar = () => {
               </Flex>
             </Link>
           </Flex>
-          <NavLink
-            link={{ label: "Login", href: "/login", icon: <IoMdPerson /> }}
-            currentPath={currentPath}
-          />
+          <AuthStatus status={status} session={session} />
         </Flex>
       </Container>
     </nav>
@@ -47,10 +59,8 @@ const NavBar = () => {
 
 const NavLink = ({
   link,
-  currentPath,
 }: {
   link: { label: string; href: string; icon?: ReactNode };
-  currentPath: string;
 }) => {
   return (
     <Flex>
@@ -58,14 +68,58 @@ const NavLink = ({
         href={link.href}
         className={classnames({
           "nav-link": true,
-          "!text-zinc-900 font-semibold bg-sky-100": link.href === currentPath,
         })}
       >
-        <Flex gap="2" justify="center" align="center">
-          <Text>{link.label}</Text>
+        <Flex gap="1" justify="center" align="center">
           {link?.icon}
+          <Text>{link.label}</Text>
         </Flex>
       </Link>
+    </Flex>
+  );
+};
+
+const AuthStatus = ({
+  status,
+  session,
+}: {
+  status: string;
+  session: Session | null;
+}) => {
+  if (status === "loading") return <Skeleton className="mt-3" width="3rem" />;
+
+  if (status === "unauthenticated")
+    return (
+      <NavLink
+        link={{
+          label: "Login",
+          href: "/api/auth/signin",
+          icon: <MdLogin />,
+        }}
+      />
+    );
+
+  return (
+    <Flex mt="2" className="cursor-pointer">
+      <DropdownMenuRoot>
+        <DropdownMenuTrigger>
+          <Flex gap="2" justify="center" align="center">
+            <FaUser />
+            <Text size="3">{session!.user!.name}</Text>
+          </Flex>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>
+            <NavLink
+              link={{
+                label: "Logout",
+                href: "/api/auth/signout",
+                icon: <MdLogout />,
+              }}
+            />
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenuRoot>
     </Flex>
   );
 };
