@@ -1,12 +1,22 @@
-import { TextField, TextFieldInput, TextFieldRoot } from "@radix-ui/themes";
+import {
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from "@chakra-ui/react";
 import SelectionLayout from "./SelectionLayout";
 
 const MinWordCountInput = () => {
   return (
     <SelectionLayout title="Essay Word Count (Min)">
-      <TextFieldRoot>
-        <TextFieldInput placeholder="150 | 250 | 500 | etc"></TextFieldInput>
-      </TextFieldRoot>
+      <NumberInput size="sm" defaultValue={250} min={1}>
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
     </SelectionLayout>
   );
 };

@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import NavBar from "./NavBar";
 import QueryClientProvider from "./QueryClientProvider";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryClientProvider>
-          <Theme accentColor="sky">
-            <NavBar />
-            <Container>
-              <main>{children}</main>
-            </Container>
-          </Theme>
+          <Providers>
+            <Theme accentColor="sky">
+              <NavBar />
+              <Container>
+                <main>{children}</main>
+              </Container>
+            </Theme>
+          </Providers>
         </QueryClientProvider>
       </body>
     </html>

@@ -1,5 +1,5 @@
 "use client";
-import { TextArea } from "@radix-ui/themes";
+import { Textarea } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useRef } from "react";
 import SubmissionLayout from "../components/SubmissionLayout";
@@ -28,11 +28,12 @@ const SingleSubmissionPage = () => {
 
   return (
     <SubmissionLayout handleSubmit={handleSubmit} titleRef={titleRef}>
-      <TextArea
+      <Textarea
         ref={bodyRef}
-        placeholder="Essay Body..."
-        className="h-96"
-        size="3"
+        placeholder="Essay Body"
+        h={96}
+        size="md"
+        required
       />
     </SubmissionLayout>
   );
