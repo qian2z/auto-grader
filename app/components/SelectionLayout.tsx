@@ -1,9 +1,9 @@
 import { Box, Flex, Text } from "@radix-ui/themes";
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 
 interface Props {
   title: string;
-  children: ReactNode;
+  children: ReactNode | ReactElement;
 }
 
 const SelectionLayout = ({ title, children }: Props) => {
