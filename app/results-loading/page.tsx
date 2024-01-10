@@ -3,6 +3,7 @@ import useFeedbacks from "@/hooks/useFeedbacks";
 import useScores from "@/hooks/useScores";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import ResultSkeleton from "../components/ResultSkeleton";
 import useResultsDataStore from "../resultsStore";
 import useSubmissionsDataStore from "../submissionsStore";
 
@@ -33,9 +34,9 @@ const ResultLoadingPage = () => {
     }
   }, [scoreLoading, feedbackLoading, router]);
 
-  if (scoreLoading || feedbackLoading) return <p>Loading...</p>;
+  if (scoreLoading || feedbackLoading) return <ResultSkeleton />;
 
-  return <div>Loading...</div>;
+  return <ResultSkeleton />;
 };
 
 export default ResultLoadingPage;
