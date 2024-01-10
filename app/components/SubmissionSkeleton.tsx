@@ -23,6 +23,7 @@ const SubmissionSkeleton = () => {
         <Flex direction="column" gap="5">
           {selections.map((selection) => (
             <SelectionLayout
+              key={selection.id}
               title={selection.label}
               children={<Skeleton count={selection.count} />}
             />

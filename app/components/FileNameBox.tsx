@@ -1,13 +1,13 @@
-import { Flex, IconButton, Text } from "@radix-ui/themes";
+import { Flex, IconButton, Kbd } from "@radix-ui/themes";
 import { FaFile } from "react-icons/fa";
 
 const FileNameBox = ({ filename }: { filename: string }) => {
   return (
-    <Flex align="center" gap="2">
+    <Flex align="center" gap="3">
       <IconButton>
         <FaFile />
       </IconButton>
-      <Text>{filename}</Text>
+      <Kbd size="4">{filename}</Kbd>
     </Flex>
   );
 };
