@@ -1,12 +1,13 @@
 "use client";
 import { Textarea } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 import SubmissionLayout from "../components/SubmissionLayout";
 import useSubmissionsDataStore from "../submissionsStore";
 
 const SingleSubmissionPage = () => {
   const router = useRouter();
+  const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
 
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
@@ -25,6 +26,10 @@ const SingleSubmissionPage = () => {
       router.push("/results-loading");
     }
   };
+
+  useEffect(() => {
+    clearSubmission();
+  }, []);
 
   return (
     <SubmissionLayout handleSubmit={handleSubmit} titleRef={titleRef}>

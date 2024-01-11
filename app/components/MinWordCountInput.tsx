@@ -20,6 +20,7 @@ const MinWordCountInput = ({ wordCount, setWordCount }: Props) => {
         defaultValue={wordCount}
         min={1}
         onChange={(count) => setWordCount(count)}
+        isRequired
       >
         <NumberInputField />
         <NumberInputStepper>

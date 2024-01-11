@@ -9,6 +9,7 @@ import useSubmissionsDataStore, { SubmissionsData } from "../submissionsStore";
 
 const MultipleSubmissionPage = () => {
   const router = useRouter();
+  const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
 
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const [submissions, setSubmissions] = useState<SubmissionsData>();
@@ -16,6 +17,7 @@ const MultipleSubmissionPage = () => {
   const setEssayTitle = useSubmissionsDataStore((s) => s.setTitle);
 
   useEffect(() => {
+    clearSubmission();
     setSubmissions({
       title: ss.title,
       bodies: ss.bodies,
