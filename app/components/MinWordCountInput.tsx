@@ -7,10 +7,20 @@ import {
 } from "@chakra-ui/react";
 import SelectionLayout from "./SelectionLayout";
 
-const MinWordCountInput = () => {
+interface Props {
+  wordCount: string;
+  setWordCount: (count: string) => void;
+}
+
+const MinWordCountInput = ({ wordCount, setWordCount }: Props) => {
   return (
     <SelectionLayout title="Essay Word Count (Min)">
-      <NumberInput size="sm" defaultValue={250} min={1}>
+      <NumberInput
+        size="sm"
+        defaultValue={wordCount}
+        min={1}
+        onChange={(count) => setWordCount(count)}
+      >
         <NumberInputField />
         <NumberInputStepper>
           <NumberIncrementStepper />

@@ -4,10 +4,11 @@ import { Badge, Blockquote, Flex, Text } from "@radix-ui/themes";
 interface Props {
   score: string;
   feedback: string;
+  scale: string;
 }
 
-const FeedbackBox = ({ score, feedback }: Props) => {
-  const percentage = (parseInt(score) / 9) * 100;
+const FeedbackBox = ({ score, feedback, scale }: Props) => {
+  const percentage = (parseInt(score) / parseInt(scale)) * 100;
 
   return (
     <Flex direction="row" className="min-h-36">
@@ -27,7 +28,7 @@ const FeedbackBox = ({ score, feedback }: Props) => {
               {score}
             </CircularProgressLabel>
           </CircularProgress>
-          <Text>out of 9</Text>
+          <Text>out of {scale}</Text>
         </Flex>
       </Flex>
       <Flex direction="column" gap="3" className="w-4/5">

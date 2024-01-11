@@ -9,15 +9,16 @@ import {
 import { essay_levels } from "../../index/levels";
 import SelectionLayout from "./SelectionLayout";
 
-const EssayLevelOption = ({
-  setLevel,
-}: {
+interface Props {
+  level: string;
   setLevel: (value: string) => void;
-}) => {
+}
+
+const EssayLevelOption = ({ level, setLevel }: Props) => {
   return (
     <SelectionLayout title="Essay Level">
       <SelectRoot
-        defaultValue="Undergraduate Level"
+        defaultValue={level}
         onValueChange={(value) => setLevel(value)}
       >
         <SelectTrigger />
@@ -26,8 +27,8 @@ const EssayLevelOption = ({
             <SelectGroup key={level.id}>
               {level.label && <SelectLabel>{level?.label}</SelectLabel>}
               {level.items.map((item) => (
-                <SelectItem key={item} value={item}>
-                  {item}
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
                 </SelectItem>
               ))}
             </SelectGroup>

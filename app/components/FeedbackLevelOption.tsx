@@ -1,27 +1,28 @@
+import { detail_levels } from "@/index/details";
 import { Flex, RadioGroup, Text } from "@radix-ui/themes";
 import SelectionLayout from "./SelectionLayout";
 
-const FeedbackLevelOption = () => {
+interface Props {
+  detail: string;
+  setDetail: (detail: string) => void;
+}
+
+const FeedbackLevelOption = ({ detail, setDetail }: Props) => {
   return (
     <SelectionLayout title="Feedback Detail Level">
-      <RadioGroup.Root defaultValue="1">
+      <RadioGroup.Root
+        defaultValue={detail}
+        onValueChange={(value) => setDetail(value)}
+      >
         <Flex gap="2" direction="column">
-          <Text as="label" size="2">
-            <Flex gap="2">
-              <RadioGroup.Item value="1" /> Simple and Concise
-            </Flex>
-          </Text>
-          <Text as="label" size="2">
-            <Flex gap="2">
-              <RadioGroup.Item value="2" /> Moderately Detailed
-            </Flex>
-          </Text>
-          <Text as="label" size="2">
-            <Flex gap="2">
-              <RadioGroup.Item value="3" /> Detailed and Analytical with
-              Examples
-            </Flex>
-          </Text>
+          {detail_levels.map((level) => (
+            <Text as="label" size="2" key={level.id}>
+              <Flex gap="2">
+                <RadioGroup.Item value={level.value} />
+                {level.label}
+              </Flex>
+            </Text>
+          ))}
         </Flex>
       </RadioGroup.Root>
     </SelectionLayout>

@@ -3,6 +3,7 @@ import { extractNumbersFromString } from "@/utils/extractNumbers";
 import { Button, Flex, Heading, TabsContent } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { FaDownload } from "react-icons/fa6";
+import OptionBadgesBox from "../components/OptionBadgesBox";
 import ResultBox from "../components/ResultBox";
 import TabsLayout from "../components/TabsLayout";
 import useResultsDataStore, { ResultsData } from "../resultsStore";
@@ -18,9 +19,10 @@ const ResultReviewPage = () => {
   useEffect(() => {
     setSubmissions({
       title: ss.title,
-      body: ss.body,
-      name: ss.name,
-      number: ss.number,
+      bodies: ss.bodies,
+      names: ss.names,
+      numbers: ss.numbers,
+      options: ss.options,
     });
     setResults({
       score: scoreNumber.map((score) => "" + score[0]!),
@@ -28,19 +30,21 @@ const ResultReviewPage = () => {
     });
   }, []);
 
-  if (submissions?.number[0] === undefined) return null;
+  if (submissions?.numbers[0] === undefined) return null;
 
   return (
     <Flex direction="column" gap="3">
       <Heading size="4">{submissions.title}</Heading>
-      <TabsLayout arr={submissions?.number}>
-        {submissions?.number.map((number, index) => (
+      <OptionBadgesBox options={submissions.options} />
+      <TabsLayout arr={submissions?.numbers}>
+        {submissions?.numbers.map((number, index) => (
           <TabsContent value={number} key={number}>
             <ResultBox
-              body={submissions?.body[index]}
+              body={submissions?.bodies[index]}
               score={results?.score[index]!}
               feedback={results?.feedback[index]!}
-              filename={submissions?.name[index]}
+              filename={submissions?.names[index]}
+              scale={submissions.options.scale}
             />
           </TabsContent>
         ))}

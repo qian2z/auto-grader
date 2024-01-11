@@ -18,9 +18,10 @@ const MultipleSubmissionPage = () => {
   useEffect(() => {
     setSubmissions({
       title: ss.title,
-      body: ss.body,
-      name: ss.name,
-      number: ss.number,
+      bodies: ss.bodies,
+      names: ss.names,
+      numbers: ss.numbers,
+      options: ss.options,
     });
   }, []);
 
@@ -32,16 +33,16 @@ const MultipleSubmissionPage = () => {
     }
   };
 
-  if (submissions?.number[0] === undefined) return null;
+  if (submissions?.numbers[0] === undefined) return null;
 
   return (
     <SubmissionLayout handleSubmit={handleSubmit} titleRef={titleRef}>
-      <TabsLayout arr={submissions?.number}>
-        {submissions?.number.map((number, index) => (
+      <TabsLayout arr={submissions?.numbers}>
+        {submissions?.numbers.map((number, index) => (
           <TabsContent value={number} key={number}>
             <Flex direction="column" gap="3">
-              <FileNameBox filename={submissions.name[index]} />
-              <Text size="3">{submissions.body[index]}</Text>
+              <FileNameBox filename={submissions.names[index]} />
+              <Text size="3">{submissions.bodies[index]}</Text>
             </Flex>
           </TabsContent>
         ))}

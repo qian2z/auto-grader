@@ -1,3 +1,4 @@
+import { getPointByValue } from "@/utils/findPoint";
 import {
   SelectContent,
   SelectGroup,
@@ -8,15 +9,28 @@ import {
 import { scoring_scales } from "../../index/scales";
 import SelectionLayout from "./SelectionLayout";
 
-const ScoringScaleSelector = () => {
+interface Props {
+  scale: string;
+  setScale: (scale: string) => void;
+  setPoint: (point: "half" | "one") => void;
+}
+
+const ScoringScaleSelector = ({ scale, setScale, setPoint }: Props) => {
   return (
     <SelectionLayout title="Scoring Scale">
-      <SelectRoot defaultValue="0 - 9">
+      <SelectRoot
+        defaultValue={scale}
+        onValueChange={(scale) => {
+          setScale(scale);
+          const point = getPointByValue(scale);
+          setPoint(point);
+        }}
+      >
         <SelectTrigger />
         <SelectContent>
           <SelectGroup>
             {scoring_scales.map((scale) => (
-              <SelectItem key={scale.id} value={scale.scale}>
+              <SelectItem key={scale.id} value={scale.value}>
                 {scale.scale}
               </SelectItem>
             ))}

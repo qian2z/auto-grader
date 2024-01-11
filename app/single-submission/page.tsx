@@ -11,9 +11,9 @@ const SingleSubmissionPage = () => {
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
   const setEssayTitle = useSubmissionsDataStore((s) => s.setTitle);
-  const setEssayBody = useSubmissionsDataStore((s) => s.setBody);
-  const setEssayName = useSubmissionsDataStore((s) => s.setName);
-  const setEssayNumber = useSubmissionsDataStore((s) => s.setNumber);
+  const setEssayBody = useSubmissionsDataStore((s) => s.setBodies);
+  const setEssayName = useSubmissionsDataStore((s) => s.setNames);
+  const setEssayNumber = useSubmissionsDataStore((s) => s.setNumbers);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

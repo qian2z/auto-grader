@@ -14,20 +14,21 @@ interface Props {
   score: string;
   feedback: string;
   filename: string;
+  scale: string;
 }
 
-const ResultBox = ({ body, score, feedback, filename }: Props) => {
+const ResultBox = ({ body, score, feedback, filename, scale }: Props) => {
   return (
     <Flex direction="column" gap="4" justify="center" align="start" m="5">
       <FileNameBox filename={filename} />
       <Separator size="4" />
-      <FeedbackBox score={score} feedback={feedback} />
+      <FeedbackBox score={score} feedback={feedback} scale={scale} />
       <Separator size="4" />
       <Flex direction="column" gap="2">
         <Badge color="blue" className="w-fit" variant="solid">
           Essay Body
         </Badge>
-        <ScrollArea type="auto" scrollbars="vertical" style={{ height: 190 }}>
+        <ScrollArea type="auto" scrollbars="vertical" style={{ height: 220 }}>
           <Box mr="3">
             <Text as="p">{body}</Text>
           </Box>

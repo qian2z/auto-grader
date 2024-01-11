@@ -101,7 +101,12 @@ const AuthStatus = ({
     <Flex mt="2" className="cursor-pointer">
       <DropdownMenuRoot>
         <DropdownMenuTrigger>
-          <Flex gap="2" justify="center" align="center">
+          <Flex
+            gap="2"
+            justify="center"
+            align="center"
+            className="rounded-md hover:bg-sky-100 transition-colors px-2"
+          >
             <FaUser />
             <Text size="3">{session!.user!.name}</Text>
           </Flex>

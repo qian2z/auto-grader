@@ -8,13 +8,13 @@ import useResultsDataStore from "../resultsStore";
 import useSubmissionsDataStore from "../submissionsStore";
 
 const ResultLoadingPage = () => {
-  const storedTitle = useSubmissionsDataStore((s) => s.data.title);
-  const storedBody = useSubmissionsDataStore((s) => s.data.body);
+  const clearResult = useResultsDataStore((s) => s.clearResult);
+  const storedData = useSubmissionsDataStore((s) => s.data);
   const setScore = useResultsDataStore((s) => s.setScore);
   const setFeedback = useResultsDataStore((s) => s.setFeedback);
 
-  const scoreResults = useScores(storedTitle!, storedBody!);
-  const feedbackResults = useFeedbacks(storedTitle!, storedBody!);
+  const scoreResults = useScores(storedData);
+  const feedbackResults = useFeedbacks(storedData);
   const scoreLoading = scoreResults.some((query) => query.isLoading);
   const feedbackLoading = feedbackResults.some((query) => query.isLoading);
 
@@ -27,6 +27,7 @@ const ResultLoadingPage = () => {
 
   const router = useRouter();
   useEffect(() => {
+    clearResult();
     if (!scoreLoading && !feedbackLoading) {
       setScore(scoreArray);
       setFeedback(feedbackArray);

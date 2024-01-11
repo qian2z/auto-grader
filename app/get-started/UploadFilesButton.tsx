@@ -10,9 +10,9 @@ const UploadFilesButton = () => {
   const [fileName, setFileName] = useState<string[]>([]);
   const [fileNumber, setFileNumber] = useState<string[]>([]);
   const [fileLength, setFileLength] = useState(0);
-  const setMultipleBody = useSubmissionsDataStore((s) => s.setBody);
-  const setMultipleName = useSubmissionsDataStore((s) => s.setName);
-  const setMultipleNumber = useSubmissionsDataStore((s) => s.setNumber);
+  const setMultipleBody = useSubmissionsDataStore((s) => s.setBodies);
+  const setMultipleName = useSubmissionsDataStore((s) => s.setNames);
+  const setMultipleNumber = useSubmissionsDataStore((s) => s.setNumbers);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
