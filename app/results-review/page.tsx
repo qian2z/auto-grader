@@ -1,7 +1,9 @@
 "use client";
 import { extractNumbersFromString } from "@/utils/extractNumbers";
 import { Button, Flex, Heading, TabsContent } from "@radix-ui/themes";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaHome } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa6";
 import OptionBadgesBox from "../components/OptionBadgesBox";
 import ResultBox from "../components/ResultBox";
@@ -49,10 +51,16 @@ const ResultReviewPage = () => {
           </TabsContent>
         ))}
       </TabsLayout>
-      <Flex justify="end">
+      <Flex justify="end" gap="3">
+        <Link href="/">
+          <Button color="yellow">
+            <FaHome />
+            Home
+          </Button>
+        </Link>
         <Button>
           <FaDownload />
-          Download .csv
+          Download Result(s)
         </Button>
       </Flex>
     </Flex>

@@ -9,6 +9,8 @@ import useSubmissionsDataStore from "../submissionsStore";
 
 const ResultLoadingPage = () => {
   const clearResult = useResultsDataStore((s) => s.clearResult);
+  const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
+
   const storedData = useSubmissionsDataStore((s) => s.data);
   const setScore = useResultsDataStore((s) => s.setScore);
   const setFeedback = useResultsDataStore((s) => s.setFeedback);
@@ -28,6 +30,7 @@ const ResultLoadingPage = () => {
   const router = useRouter();
   useEffect(() => {
     clearResult();
+    clearSubmission();
     if (!scoreLoading && !feedbackLoading) {
       setScore(scoreArray);
       setFeedback(feedbackArray);

@@ -18,13 +18,8 @@ import { MdLogin, MdLogout } from "react-icons/md";
 import { TfiWrite } from "react-icons/tfi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import useResultsDataStore from "./resultsStore";
-import useSubmissionsDataStore from "./submissionsStore";
 
 const NavBar = () => {
-  const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
-  const clearResult = useResultsDataStore((s) => s.clearResult);
-
   const { status, data: session } = useSession();
 
   return (
@@ -33,13 +28,7 @@ const NavBar = () => {
         <Flex gap="4" justify="between">
           <Flex></Flex>
           <Flex mt="2">
-            <Link
-              href="/"
-              onClick={() => {
-                clearSubmission();
-                clearResult();
-              }}
-            >
+            <Link href="/" onClick={() => {}}>
               <Flex gap="3" justify="center" align="center">
                 <TfiWrite size={25} />
                 <Text weight="bold" size="5">
