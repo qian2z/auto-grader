@@ -10,7 +10,7 @@ import {
 } from "@radix-ui/themes";
 import classnames from "classnames";
 import { Session } from "next-auth";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { FaUser } from "react-icons/fa";
@@ -101,14 +101,11 @@ const AuthStatus = ({
           </Flex>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <NavLink
-              link={{
-                label: "Logout",
-                href: "/api/auth/signout",
-                icon: <MdLogout />,
-              }}
-            />
+          <DropdownMenuItem
+            onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+          >
+            <MdLogout className="mr-1" />
+            Logout
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenuRoot>
