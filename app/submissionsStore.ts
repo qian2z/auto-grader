@@ -38,7 +38,7 @@ const useSubmissionsDataStore = create<SubmissionsDataStore>()(
         options: {
           level: "Undergraduate Level",
           type: "Research",
-          scale: "0-9",
+          scale: "9",
           wordCount: "250",
           detail: "Simple and Concise",
           point: "half",
@@ -63,7 +63,7 @@ const useSubmissionsDataStore = create<SubmissionsDataStore>()(
             options: {
               level: "Undergraduate Level",
               type: "Research",
-              scale: "0-9",
+              scale: "9",
               wordCount: "250",
               detail: "Simple and Concise",
               point: "half",

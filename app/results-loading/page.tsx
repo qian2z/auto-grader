@@ -4,6 +4,7 @@ import useScores from "@/hooks/useScores";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import ResultSkeleton from "../components/ResultSkeleton";
+import ResultErrorPage from "../results-review/error";
 import useResultsDataStore from "../resultsStore";
 import useSubmissionsDataStore from "../submissionsStore";
 
@@ -16,6 +17,8 @@ const ResultLoadingPage = () => {
 
   const scoreResults = useScores(storedData);
   const feedbackResults = useFeedbacks(storedData);
+  const scoreError = scoreResults.some((query) => query.error);
+  const feedbackError = feedbackResults.some((query) => query.error);
   const scoreLoading = scoreResults.some((query) => query.isLoading);
   const feedbackLoading = feedbackResults.some((query) => query.isLoading);
 
@@ -35,6 +38,8 @@ const ResultLoadingPage = () => {
       router.push("/results-review");
     }
   }, [scoreLoading, feedbackLoading, router]);
+
+  if (scoreError || feedbackError) return <ResultErrorPage />;
 
   if (scoreLoading || feedbackLoading) return <ResultSkeleton />;
 
