@@ -7,7 +7,6 @@ import useSubmissionsDataStore from "../submissionsStore";
 
 const SingleSubmissionPage = () => {
   const router = useRouter();
-  const clearSubmission = useSubmissionsDataStore((s) => s.clearSubmission);
 
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
@@ -26,10 +25,6 @@ const SingleSubmissionPage = () => {
       router.push("/results-loading");
     }
   };
-
-  useEffect(() => {
-    clearSubmission();
-  }, []);
 
   return (
     <SubmissionLayout handleSubmit={handleSubmit} titleRef={titleRef}>

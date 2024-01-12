@@ -4,7 +4,7 @@ import { Button, Flex, Heading, TabsContent } from "@radix-ui/themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaHome } from "react-icons/fa";
-import { FaDownload } from "react-icons/fa6";
+import CsvExportButton from "../components/CsvExportButton";
 import OptionBadgesBox from "../components/OptionBadgesBox";
 import ResultBox from "../components/ResultBox";
 import TabsLayout from "../components/TabsLayout";
@@ -32,6 +32,12 @@ const ResultReviewPage = () => {
     });
   }, []);
 
+  const exportData = [
+    submissions?.bodies!,
+    results?.score!,
+    results?.feedback!,
+  ];
+
   if (submissions?.numbers[0] === undefined) return null;
 
   return (
@@ -58,10 +64,7 @@ const ResultReviewPage = () => {
             Home
           </Button>
         </Link>
-        <Button>
-          <FaDownload />
-          Download Result(s)
-        </Button>
+        <CsvExportButton data={exportData} filename="autograder-results" />
       </Flex>
     </Flex>
   );
