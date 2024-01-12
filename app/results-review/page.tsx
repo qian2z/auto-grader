@@ -4,8 +4,8 @@ import { Button, Flex, Heading, TabsContent } from "@radix-ui/themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaHome } from "react-icons/fa";
+import BadRequestErrorPage from "../../pages/BadRequestErrorPage";
 import CsvExportButton from "../components/CsvExportButton";
-import NullErrorPage from "../components/NullErrorPage";
 import OptionBadgesBox from "../components/OptionBadgesBox";
 import ResultBox from "../components/ResultBox";
 import TabsLayout from "../components/TabsLayout";
@@ -45,8 +45,8 @@ const ResultReviewPage = () => {
     results?.feedback!,
   ];
 
-  if (!submissions || !results) return <NullErrorPage />;
   if (submissions?.numbers[0] === undefined) return null;
+  if (!submissions || !results) return <BadRequestErrorPage />;
 
   return (
     <Flex direction="column" gap="3">
