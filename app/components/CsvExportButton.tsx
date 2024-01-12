@@ -13,7 +13,7 @@ const CsvExportButton = ({ data, filename }: Props) => {
       data.map((row) => row[colIndex])
     );
     const csvData = Papa.unparse({
-      fields: ["Essay Body", "Overall Rating", "Feedback"],
+      fields: ["File Name", "Essay Body", "Overall Rating", "Feedback"],
       data: transposedData,
     });
 

@@ -33,6 +33,7 @@ const ResultReviewPage = () => {
   }, []);
 
   const exportData = [
+    submissions?.names!,
     submissions?.bodies!,
     results?.score!,
     results?.feedback!,

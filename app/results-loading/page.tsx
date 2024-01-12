@@ -11,6 +11,10 @@ import useSubmissionsDataStore from "../submissionsStore";
 const ResultLoadingPage = () => {
   const clearResult = useResultsDataStore((s) => s.clearResult);
 
+  useEffect(() => {
+    clearResult();
+  }, []);
+
   const storedData = useSubmissionsDataStore((s) => s.data);
   const setScore = useResultsDataStore((s) => s.setScore);
   const setFeedback = useResultsDataStore((s) => s.setFeedback);
@@ -31,13 +35,12 @@ const ResultLoadingPage = () => {
 
   const router = useRouter();
   useEffect(() => {
-    clearResult();
     if (!scoreLoading && !feedbackLoading) {
       setScore(scoreArray);
       setFeedback(feedbackArray);
       router.push("/results-review");
     }
-  }, [scoreLoading, feedbackLoading, router]);
+  }, [scoreResults, feedbackResults]);
 
   if (scoreError || feedbackError) return <ResultErrorPage />;
 

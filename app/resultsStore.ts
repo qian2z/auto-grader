@@ -25,7 +25,9 @@ const useResultsDataStore = create<ResultsDataStore>()(
           data: { score: ["Initial Score"], feedback: ["Initial Feedback"] },
         }),
     }),
-    { name: "results-data" }
+    {
+      name: "results-data",
+    }
   )
 );
 

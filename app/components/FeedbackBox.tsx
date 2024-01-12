@@ -25,7 +25,7 @@ const FeedbackBox = ({ score, feedback, scale }: Props) => {
         >
           <CircularProgress size="75px" value={percentage} color="orange.500">
             <CircularProgressLabel fontWeight="bold">
-              {score}
+              {score || "0"}
             </CircularProgressLabel>
           </CircularProgress>
           <Text>out of {scale}</Text>

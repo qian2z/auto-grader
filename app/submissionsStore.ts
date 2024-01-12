@@ -71,7 +71,9 @@ const useSubmissionsDataStore = create<SubmissionsDataStore>()(
           },
         }),
     }),
-    { name: "submissions-data" }
+    {
+      name: "submissions-data",
+    }
   )
 );
 
