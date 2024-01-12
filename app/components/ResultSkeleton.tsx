@@ -10,10 +10,12 @@ import {
 import { FaFile } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import UnsavedCallout from "./UnsavedCallout";
 
 const ResultSkeleton = () => {
   return (
     <Flex direction="column" gap="3">
+      <UnsavedCallout />
       <Heading size="4">
         <Skeleton count={3} />
       </Heading>
@@ -61,7 +63,8 @@ const ResultSkeleton = () => {
         </Flex>
       </Flex>
       <Flex justify="end">
-        <Flex className="w-1/12">
+        <Flex className="w-2/12" gap="3">
+          <Skeleton containerClassName="flex-1" height="25px" />
           <Skeleton containerClassName="flex-1" height="25px" />
         </Flex>
       </Flex>

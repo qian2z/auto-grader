@@ -5,7 +5,7 @@ import { Options } from "../submissionsStore";
 const OptionBadgesBox = ({ options }: { options: Options }) => {
   return (
     <Flex gap="2" justify="end">
-      <Badge color="red" variant="surface">
+      <Badge color="bronze" variant="surface">
         {capitaliseWord(options.level)}
       </Badge>
       <Badge color="grass" variant="surface">

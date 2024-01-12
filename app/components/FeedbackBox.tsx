@@ -8,7 +8,8 @@ interface Props {
 }
 
 const FeedbackBox = ({ score, feedback, scale }: Props) => {
-  const percentage = (parseInt(score) / parseInt(scale)) * 100;
+  const newScore = score === "undefined" ? "0" : score;
+  const percentage = (parseInt(newScore) / parseInt(scale)) * 100;
 
   return (
     <Flex direction="row" className="min-h-36">
@@ -25,7 +26,7 @@ const FeedbackBox = ({ score, feedback, scale }: Props) => {
         >
           <CircularProgress size="75px" value={percentage} color="orange.500">
             <CircularProgressLabel fontWeight="bold">
-              {score || "0"}
+              {newScore}
             </CircularProgressLabel>
           </CircularProgress>
           <Text>out of {scale}</Text>

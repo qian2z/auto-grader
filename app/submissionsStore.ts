@@ -30,20 +30,7 @@ interface SubmissionsDataStore {
 const useSubmissionsDataStore = create<SubmissionsDataStore>()(
   persist(
     (set) => ({
-      data: {
-        title: "Initial Title",
-        bodies: ["Initial Body"],
-        names: ["Initial Filename"],
-        numbers: ["Initial Number"],
-        options: {
-          level: "Undergraduate Level",
-          type: "Research",
-          scale: "9",
-          wordCount: "250",
-          detail: "Simple and Concise",
-          point: "half",
-        },
-      },
+      data: null!,
       setTitle: (title) => set((store) => ({ data: { ...store.data, title } })),
       setBodies: (bodies) =>
         set((store) => ({ data: { ...store.data, bodies: bodies } })),
@@ -55,20 +42,7 @@ const useSubmissionsDataStore = create<SubmissionsDataStore>()(
         set((store) => ({ data: { ...store.data, options } })),
       clearSubmission: () =>
         set({
-          data: {
-            title: "Initial Title",
-            bodies: ["Initial Body"],
-            names: ["Initial Filename"],
-            numbers: ["Initial Number"],
-            options: {
-              level: "Undergraduate Level",
-              type: "Research",
-              scale: "9",
-              wordCount: "250",
-              detail: "Simple and Concise",
-              point: "half",
-            },
-          },
+          data: null!,
         }),
     }),
     {

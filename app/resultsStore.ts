@@ -16,13 +16,13 @@ interface ResultsDataStore {
 const useResultsDataStore = create<ResultsDataStore>()(
   persist(
     (set) => ({
-      data: { score: ["Initial Score"], feedback: ["Initial Feedback"] },
+      data: null!,
       setScore: (score) => set((store) => ({ data: { ...store.data, score } })),
       setFeedback: (feedback) =>
         set((store) => ({ data: { ...store.data, feedback } })),
       clearResult: () =>
         set({
-          data: { score: ["Initial Score"], feedback: ["Initial Feedback"] },
+          data: null!,
         }),
     }),
     {
