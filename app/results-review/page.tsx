@@ -45,13 +45,13 @@ const ResultReviewPage = () => {
     results?.feedback!,
   ];
 
-  if (submissions?.numbers[0] === undefined) return null;
   if (!submissions || !results) return <BadRequestErrorPage />;
+  if (submissions?.numbers[0] === undefined) return null;
 
   return (
-    <Flex direction="column" gap="3">
+    <Flex direction="column" gap="2">
       <UnsavedCallout />
-      <Heading size="4">{submissions.title}</Heading>
+      <Heading size="5">{submissions.title}</Heading>
       <OptionBadgesBox options={submissions.options} />
       <TabsLayout arr={submissions?.numbers}>
         {submissions?.numbers.map((number, index) => (

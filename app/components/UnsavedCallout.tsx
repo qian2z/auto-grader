@@ -14,7 +14,7 @@ const UnsavedCallout = () => {
         <CalloutIcon>
           <CiCircleInfo />
         </CalloutIcon>
-        <CalloutText size="3">
+        <CalloutText size="2">
           Leaving this page will <Strong>discard</Strong> the results data.
           Please <Strong>download the results</Strong> before leaving.
         </CalloutText>
