@@ -13,7 +13,7 @@ interface Props {
 const SubmissionLayout = ({ handleSubmit, titleRef, children }: Props) => {
   return (
     <form onSubmit={handleSubmit}>
-      <Flex direction="column" m="5">
+      <Flex direction="column">
         <Flex gap="6" justify="center" align="start">
           <Flex direction="column" gap="3" className="w-4/5">
             <Textarea

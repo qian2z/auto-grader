@@ -26,7 +26,6 @@ const NavBar = () => {
     <nav className="border-b mb-5 px-5 h-14 py-2">
       <Container>
         <Flex gap="4" justify="between">
-          <Flex></Flex>
           <Flex mt="2">
             <Link href="/" onClick={() => {}}>
               <Flex gap="3" justify="center" align="center">

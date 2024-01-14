@@ -6,7 +6,7 @@ import SubmissionTriggerCard from "./SubmissionTriggerCard";
 
 const GetStartedPage = () => {
   return (
-    <Flex align="center" justify="center" p="9" m="9">
+    <Flex align="center" justify="center" p="6" m="9">
       <Flex align="center" gap="4">
         <Link href="/single-submission">
           <SubmissionTriggerCard title="Single Submission">
