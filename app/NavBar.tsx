@@ -27,7 +27,7 @@ const NavBar = () => {
       <Container>
         <Flex gap="4" justify="between">
           <Flex mt="2">
-            <Link href="/" onClick={() => {}}>
+            <Link href="/">
               <Flex gap="3" justify="center" align="center">
                 <TfiWrite size={25} />
                 <Text weight="bold" size="5">
