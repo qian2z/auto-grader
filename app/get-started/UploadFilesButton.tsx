@@ -1,6 +1,7 @@
 "use client";
 import convertPdfToDocx from "@/utils/convertPdfToDocx";
 import { Flex, Text } from "@radix-ui/themes";
+import mammoth from "mammoth";
 import { useState } from "react";
 import { LuFileStack } from "react-icons/lu";
 import useSubmissionsDataStore from "../submissionsStore";
@@ -23,15 +24,26 @@ const UploadFilesButton = () => {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         try {
-          // const arrayBuffer = await file.arrayBuffer();
-          // console.log(arrayBuffer);
-          // const result = await mammoth.extractRawText({ arrayBuffer });
-          // const text = result.value;
-          // setExtractedText((prevExtractedText) => [...prevExtractedText, text]);
-          // setFileName((prevFileName) => [...prevFileName, file.name]);
-          // setFileNumber((prevFileNumber) => [...prevFileNumber, "" + (i + 1)]);
-          const converted = convertPdfToDocx(file);
-          converted.then((result) => console.log(result));
+          if (file.type === "application/pdf") {
+            const converted = convertPdfToDocx(file);
+            converted.then((result) =>
+              setExtractedText((prevExtractedText) => [
+                ...prevExtractedText,
+                result,
+              ])
+            );
+          } else {
+            const arrayBuffer = await file.arrayBuffer();
+            const result = await mammoth.extractRawText({ arrayBuffer });
+            const text = result.value;
+            setExtractedText((prevExtractedText) => [
+              ...prevExtractedText,
+              text,
+            ]);
+          }
+
+          setFileName((prevFileName) => [...prevFileName, file.name]);
+          setFileNumber((prevFileNumber) => [...prevFileNumber, "" + (i + 1)]);
         } catch (error) {
           console.error("Error reading .docx file:", error);
         }
@@ -62,7 +74,7 @@ const UploadFilesButton = () => {
         type="file"
         id="file-upload"
         multiple
-        accept=".pdf"
+        accept=".pdf, .docx"
         className="hidden"
         onChangeCapture={handleFileChange}
       />
