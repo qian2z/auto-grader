@@ -1,6 +1,6 @@
 "use client";
 import convertExtractPdfText from "@/utils/convertExtractPdfText";
-import { Flex, Text } from "@radix-ui/themes";
+import { Flex, Kbd, Text } from "@radix-ui/themes";
 import mammoth from "mammoth";
 import { useState } from "react";
 import { LuFileStack } from "react-icons/lu";
@@ -26,20 +26,24 @@ const UploadFilesButton = () => {
         try {
           if (file.type === "application/pdf") {
             const converted = convertExtractPdfText(file);
-            converted.then((result) =>
-              setExtractedText((prevExtractedText) => [
-                ...prevExtractedText,
-                result,
-              ])
-            );
+            if (await converted) {
+              converted.then((result) =>
+                setExtractedText((prevExtractedText) => [
+                  ...prevExtractedText,
+                  result,
+                ])
+              );
+            }
           } else {
             const arrayBuffer = await file.arrayBuffer();
             const result = await mammoth.extractRawText({ arrayBuffer });
             const text = result.value;
-            setExtractedText((prevExtractedText) => [
-              ...prevExtractedText,
-              text,
-            ]);
+            if (text) {
+              setExtractedText((prevExtractedText) => [
+                ...prevExtractedText,
+                text,
+              ]);
+            }
           }
           setFileName((prevFileName) => [...prevFileName, file.name]);
           setFileNumber((prevFileNumber) => [...prevFileNumber, "" + (i + 1)]);
@@ -50,9 +54,11 @@ const UploadFilesButton = () => {
     }
   };
 
-  setMultipleBody(extractedText);
-  setMultipleName(fileName);
-  setMultipleNumber(fileNumber);
+  if (extractedText.length === fileLength) {
+    setMultipleBody(extractedText);
+    setMultipleName(fileName);
+    setMultipleNumber(fileNumber);
+  }
 
   return (
     <Flex
@@ -60,14 +66,14 @@ const UploadFilesButton = () => {
       justify="center"
       align="center"
       p="8"
-      gap="4"
+      gap="5"
       className="bg-sky-100 rounded-lg border-dashed border-2 border-gray-300"
     >
       <label
         htmlFor="file-upload"
         className="block text-center text-gray-600 font-semibold text-lg cursor-pointer"
       >
-        Click Here to Upload .docx File(s)
+        Click Here to Upload <Kbd>{"PDF"}</Kbd> or <Kbd>{"DOCX"}</Kbd> File(s)
       </label>
       <input
         type="file"
