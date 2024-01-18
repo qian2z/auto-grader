@@ -78,7 +78,7 @@ const AuthStatus = ({
     return (
       <NavLink
         link={{
-          label: "Login",
+          label: "Sign In",
           href: "/api/auth/signin",
           icon: <MdLogin />,
         }}
@@ -104,7 +104,7 @@ const AuthStatus = ({
             onClick={() => signOut({ callbackUrl: "/", redirect: true })}
           >
             <MdLogout className="mr-1" />
-            Logout
+            Sign Out
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenuRoot>
