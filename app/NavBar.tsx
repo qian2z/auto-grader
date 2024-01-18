@@ -23,7 +23,7 @@ const NavBar = () => {
   const { status, data: session } = useSession();
 
   return (
-    <nav className="border-b mb-5 px-5 h-14 py-2">
+    <nav className="border-b mb-5 h-14 py-2">
       <Container>
         <Flex gap="4" justify="between">
           <Flex mt="2">
@@ -78,7 +78,7 @@ const AuthStatus = ({
     return (
       <NavLink
         link={{
-          label: "Sign In",
+          label: "Login",
           href: "/api/auth/signin",
           icon: <MdLogin />,
         }}
