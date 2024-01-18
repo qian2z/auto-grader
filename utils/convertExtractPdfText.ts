@@ -1,7 +1,7 @@
 import ConvertApi from "convertapi-js";
 import mammoth from "mammoth";
 
-export default async function convertPdfToDocx(file: File) {
+export default async function convertExtractPdfText(file: File) {
   let convertApi = ConvertApi.auth(process.env.NEXT_PUBLIC_CONVERT_API_SECRET!);
   let params = convertApi.createParams();
   params.add("File", file);

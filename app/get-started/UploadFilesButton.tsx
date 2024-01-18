@@ -1,5 +1,5 @@
 "use client";
-import convertPdfToDocx from "@/utils/convertPdfToDocx";
+import convertExtractPdfText from "@/utils/convertExtractPdfText";
 import { Flex, Text } from "@radix-ui/themes";
 import mammoth from "mammoth";
 import { useState } from "react";
@@ -25,7 +25,7 @@ const UploadFilesButton = () => {
         const file = files[i];
         try {
           if (file.type === "application/pdf") {
-            const converted = convertPdfToDocx(file);
+            const converted = convertExtractPdfText(file);
             converted.then((result) =>
               setExtractedText((prevExtractedText) => [
                 ...prevExtractedText,
@@ -41,7 +41,6 @@ const UploadFilesButton = () => {
               text,
             ]);
           }
-
           setFileName((prevFileName) => [...prevFileName, file.name]);
           setFileNumber((prevFileNumber) => [...prevFileNumber, "" + (i + 1)]);
         } catch (error) {
