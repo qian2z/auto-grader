@@ -1,5 +1,4 @@
 "use client";
-import { extractNumbersFromString } from "@/utils/extractNumbers";
 import { Button, Flex, Heading, TabsContent } from "@radix-ui/themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -18,9 +17,6 @@ const ResultReviewPage = () => {
   const [results, setResults] = useState<ResultsData>();
   const ss = useSubmissionsDataStore((s) => s.data);
   const sr = useResultsDataStore((s) => s.data);
-  const scoreNumber = sr
-    ? sr.score.map((score) => extractNumbersFromString(score))
-    : null;
 
   useEffect(() => {
     if (ss && sr) {
@@ -32,7 +28,7 @@ const ResultReviewPage = () => {
         options: ss.options,
       });
       setResults({
-        score: scoreNumber?.map((score) => "" + score[0]!) || [],
+        score: sr.score,
         feedback: sr.feedback,
       });
     }

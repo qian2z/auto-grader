@@ -1,6 +1,4 @@
-export function extractNumbersFromString(
-  inputString: string
-): (number | null)[] {
+export function extractNumbersFromString(inputString: string): number[] {
   const numberMatches = inputString.match(/(\d+(\.\d+)?)/g);
 
   if (numberMatches) {

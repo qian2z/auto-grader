@@ -1,3 +1,4 @@
+import { extractNumbersFromString } from "@/utils/extractNumbers";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { Badge, Blockquote, Flex, Text } from "@radix-ui/themes";
 
@@ -8,7 +9,9 @@ interface Props {
 }
 
 const FeedbackBox = ({ score, feedback, scale }: Props) => {
-  const newScore = score === "undefined" ? "0" : score;
+  const scoreNumber = "" + extractNumbersFromString(score)[0];
+  const newScore = scoreNumber === "undefined" ? "0" : score;
+  const newFeedback = scoreNumber === "undefined" ? score : feedback;
   const percentage = (parseInt(newScore) / parseInt(scale)) * 100;
 
   return (
@@ -36,7 +39,7 @@ const FeedbackBox = ({ score, feedback, scale }: Props) => {
         <Badge color="jade" className="w-fit h-5" variant="solid">
           Comment
         </Badge>
-        <Blockquote size="3">{feedback}</Blockquote>
+        <Blockquote size="3">{newFeedback}</Blockquote>
       </Flex>
     </Flex>
   );
