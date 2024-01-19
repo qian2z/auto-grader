@@ -32,7 +32,7 @@ const ResultReviewPage = () => {
         feedback: sr.feedback,
       });
     }
-  }, []);
+  }, [sr]);
 
   const exportData = [
     submissions?.names!,
