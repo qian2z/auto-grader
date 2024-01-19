@@ -3,7 +3,7 @@
 Auto Grader is a web application designed as a final year project for my BSc (Hons) in Computing Science. This project utilises the GPT-3.5 API service to score short English essays and provide relevant feedback. Built with Next.js, React and Typescript, the application incorporates various libraries and packages to enhance its functionality.
 
 ## Features
-- **Connect to GPT-3.5 API:** The application seamlessly connects to the GPT-3.5 API, sending requests and receiving grading results for English essays.
+- **Connect to GPT-3.5 API:** The application seamlessly connects to the GPT-3.5 API, sending requests and receiving grading results for short English essays.
 - **Support Multiple Essay Submissions:** Users can efficiently submit multiple essays for grading, streamlining the process of evaluating multiple pieces of writing.
 - **Support PDF and DOCX File Type:** Utilising Convert API and Mammoth, the application can extract text from PDF and DOCX files, allowing users to upload documents in various formats.
 - **Multiple Grading Options:** Users have the flexibility to select essay levels, types, scoring scales, and feedback detail levels, providing essay context and customising the generated output.
