@@ -3,6 +3,7 @@ import convertExtractPdfText from "@/utils/convertExtractPdfText";
 import { Flex, Kbd, Text } from "@radix-ui/themes";
 import mammoth from "mammoth";
 import { useState } from "react";
+import { IoMdDoneAll } from "react-icons/io";
 import { LuFileStack } from "react-icons/lu";
 import useSubmissionsDataStore from "../submissionsStore";
 
@@ -11,6 +12,7 @@ const UploadFilesButton = () => {
   const [fileName, setFileName] = useState<string[]>([]);
   const [fileNumber, setFileNumber] = useState<string[]>([]);
   const [fileLength, setFileLength] = useState(0);
+  const [isReady, setReady] = useState(false);
   const setMultipleBody = useSubmissionsDataStore((s) => s.setBodies);
   const setMultipleName = useSubmissionsDataStore((s) => s.setNames);
   const setMultipleNumber = useSubmissionsDataStore((s) => s.setNumbers);
@@ -51,6 +53,7 @@ const UploadFilesButton = () => {
           console.error("Error reading .docx file:", error);
         }
       }
+      setReady(true);
     }
   };
 
@@ -99,6 +102,18 @@ const UploadFilesButton = () => {
           </Flex>
         </Flex>
       </label>
+      {isReady ? (
+        <Flex gap="2" justify="center" align="center">
+          <Text color="green" weight="bold">
+            Upload Completed
+          </Text>
+          <IoMdDoneAll />
+        </Flex>
+      ) : (
+        <Text color="red" weight="bold">
+          Please Wait for Upload Complete!
+        </Text>
+      )}
     </Flex>
   );
 };
