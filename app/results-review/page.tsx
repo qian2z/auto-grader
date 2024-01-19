@@ -58,6 +58,7 @@ const ResultReviewPage = () => {
               feedback={results?.feedback[index]!}
               filename={submissions?.names[index]}
               scale={submissions.options.scale}
+              index={index}
             />
           </TabsContent>
         ))}

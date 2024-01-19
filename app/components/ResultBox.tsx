@@ -15,14 +15,27 @@ interface Props {
   feedback: string;
   filename: string;
   scale: string;
+  index: number;
 }
 
-const ResultBox = ({ body, score, feedback, filename, scale }: Props) => {
+const ResultBox = ({
+  body,
+  score,
+  feedback,
+  filename,
+  scale,
+  index,
+}: Props) => {
   return (
     <Flex direction="column" gap="4" justify="center" align="start" m="5">
       <FileNameBox filename={filename} />
       <Separator size="4" />
-      <FeedbackBox score={score} feedback={feedback} scale={scale} />
+      <FeedbackBox
+        score={score}
+        feedback={feedback}
+        scale={scale}
+        index={index}
+      />
       <Separator size="4" />
       <Flex direction="column" gap="2">
         <Badge color="blue" className="w-fit" variant="solid">
