@@ -1,5 +1,6 @@
 "use client";
 import convertExtractPdfText from "@/utils/convertExtractPdfText";
+import { Spinner } from "@chakra-ui/react";
 import { Flex, Kbd, Text } from "@radix-ui/themes";
 import mammoth from "mammoth";
 import { useState } from "react";
@@ -12,6 +13,7 @@ const UploadFilesButton = () => {
   const [fileName, setFileName] = useState<string[]>([]);
   const [fileNumber, setFileNumber] = useState<string[]>([]);
   const [fileLength, setFileLength] = useState(0);
+  const [isLoading, setLoading] = useState(false);
   const [isReady, setReady] = useState(false);
   const setMultipleBody = useSubmissionsDataStore((s) => s.setBodies);
   const setMultipleName = useSubmissionsDataStore((s) => s.setNames);
@@ -22,6 +24,8 @@ const UploadFilesButton = () => {
   ) => {
     const files = event.target.files;
     if (files) {
+      setLoading(true);
+      setReady(false);
       setFileLength(files.length);
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -53,6 +57,7 @@ const UploadFilesButton = () => {
           console.error("Error reading .docx file:", error);
         }
       }
+      setLoading(false);
       setReady(true);
     }
   };
@@ -102,17 +107,21 @@ const UploadFilesButton = () => {
           </Flex>
         </Flex>
       </label>
-      {isReady ? (
+      {isLoading && !isReady && (
+        <Flex gap="2" justify="center" align="center">
+          <Text color="blue" weight="bold">
+            Uploading
+          </Text>
+          <Spinner />
+        </Flex>
+      )}
+      {!isLoading && isReady && (
         <Flex gap="2" justify="center" align="center">
           <Text color="green" weight="bold">
             Upload Completed
           </Text>
           <IoMdDoneAll />
         </Flex>
-      ) : (
-        <Text color="red" weight="bold">
-          Please Wait for Upload Complete!
-        </Text>
       )}
     </Flex>
   );
