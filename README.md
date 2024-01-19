@@ -22,5 +22,11 @@ Auto Grader is a web application designed as a final year project for my BSc (Ho
 - Zustand
 - Prisma
 
+## Getting Started
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Set up environment variables, including GPT-3.5 API keys and other necessary configurations.
+4. Run the application using `npm run dev`.
+
 ## Acknowledgments
 Special thanks to the open-source community for making this project possible.
