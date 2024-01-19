@@ -24,9 +24,9 @@ export default function Home() {
               Master the Art of Expression with Intelligent Essay Grading
             </h1>
             <p className="mt-6 text-xl leading-8 text-gray-600">
-              Experience the future of education with automated grading that's
-              accurate, insightful, and tailored to each student's unique
-              journey.
+              Experience the future of education with automated grading
+              that&#39;s accurate, insightful, and tailored to each
+              student&#39;s unique journey.
             </p>
             <div className="mt-5 flex items-center justify-start">
               <Button size="3">
