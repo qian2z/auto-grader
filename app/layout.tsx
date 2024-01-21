@@ -1,5 +1,6 @@
 import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "./Footer";
@@ -40,6 +41,7 @@ export default function RootLayout({
             </Providers>
           </AuthProvider>
         </QueryClientProvider>
+        <Analytics />
       </body>
     </html>
   );
