@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Auto Grader
+
+Auto Grader is a web application designed as a final year project for my BSc (Hons) in Computing Science. This project utilises the GPT-3.5 API service to score short English essays and provide relevant feedback. Built with Next.js, React and Typescript, the application incorporates various libraries and packages to enhance its functionality.
+
+## Features
+- **Connect to GPT-3.5 API:** The application seamlessly connects to the GPT-3.5 API, sending requests and receiving grading results for short English essays.
+- **Support Multiple Essay Submissions:** Users can efficiently submit multiple essays for grading, streamlining the process of evaluating multiple pieces of writing.
+- **Support PDF and DOCX File Type:** Utilising Convert API and Mammoth, the application can extract text from PDF and DOCX files, allowing users to upload documents in various formats.
+- **Multiple Grading Options:** Users have the flexibility to select essay levels, types, scoring scales, and feedback detail levels, providing essay context and customising the generated output.
+- **Grading Results Review:** After the grading process, users can review the generated results and make modifications as needed, ensuring accuracy and relevance.
+- **Downloadable .csv Results:** The application enables users to download the results of essay submissions in a convenient .csv file. This file compiles all necessary information related to the essay submissions.
+- **Loading Indicator:** Enhancing user experience, the application includes loading indicators to display the status of document uploads and results generation.
+- **Error Handling:** Comprehensive error handling ensures that users are informed of any issues during the essay submission process. Well-designed and described error pages provide clarity and guidance.
+
+## Technologies Used
+- Radix UI, Chakra UI, Tailwind CSS
+- Axios
+- React Query
+- Convert API, Mammoth
+- Papaparse
+- Next Auth
+- Zustand
+- Prisma
 
 ## Getting Started
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Set up environment variables, including GPT-3.5 API keys and other necessary configurations.
+4. Run the application using `npm run dev`.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Acknowledgments
+Special thanks to the open-source community for making this project possible.
