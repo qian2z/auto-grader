@@ -21,7 +21,7 @@ export default function Home() {
         <div className="max-w-2xl">
           <div className="text-left w-full">
             <h1 className="text-5xl font-bold tracking-tight text-gray-900">
-              Master the Art of Expression with Intelligent Essay Grading
+              Master the Art of Feedback with Intelligent Essay Grading
             </h1>
             <p className="mt-6 text-xl leading-8 text-gray-600">
               Experience the future of education with automated grading
