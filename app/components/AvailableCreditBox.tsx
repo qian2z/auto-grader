@@ -1,11 +1,13 @@
 import useCredit from "@/hooks/useCredit";
 import { Badge, Flex, Text } from "@radix-ui/themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AvailableCreditBox = () => {
   const [credit, setCredit] = useState(0);
 
-  useCredit(setCredit);
+  useEffect(() => {
+    useCredit(setCredit);
+  }, []);
 
   return (
     <Flex align="center" justify="start" gap="1" mx="1">
