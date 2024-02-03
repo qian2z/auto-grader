@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@radix-ui/themes";
+import { Badge, Box, Flex, Text } from "@radix-ui/themes";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SubmissionActionsBox from "./SubmissionActionsBox";
@@ -20,6 +20,10 @@ const SubmissionSkeleton = () => {
           <Skeleton count={15} />
         </Flex>
         <Flex direction="column" gap="5">
+          <Flex align="center" justify="start" gap="1" mx="1">
+            <Badge color="blue">Available Credit</Badge>
+            <Skeleton count={1} />
+          </Flex>
           {selections.map((selection) => (
             <Flex direction="column" gap="1" key={selection.id}>
               <Text as="label" size="3" weight="bold">
