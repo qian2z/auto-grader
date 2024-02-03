@@ -1,12 +1,21 @@
-import useCredit from "@/hooks/useCredit";
 import { Badge, Flex, Text } from "@radix-ui/themes";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const AvailableCreditBox = () => {
-  const [credit, setCredit] = useState(0);
+  const [credit, setCredit] = useState<number | undefined>(0);
 
   useEffect(() => {
-    useCredit(setCredit);
+    const fetchCredit = async () => {
+      try {
+        await axios
+          .get<string>("/api/user")
+          .then((res) => setCredit(parseInt(res.data)));
+      } catch (error) {
+        console.log("Invalid User.");
+      }
+    };
+    fetchCredit();
   }, []);
 
   return (
