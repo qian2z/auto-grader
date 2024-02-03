@@ -6,6 +6,7 @@ import { getPointByValue } from "@/utils/findPoint";
 import { useEffect, useState } from "react";
 import { essay_types } from "../../index/types";
 import useSubmissionsDataStore, { Options } from "../submissionsStore";
+import AvailableCreditBox from "./AvailableCreditBox";
 import EssayLevelOption from "./EssayLevelOption";
 import EssayTypeOption from "./EssayTypeOption";
 import FeedbackLevelOption from "./FeedbackLevelOption";
@@ -35,6 +36,7 @@ const GradingOptionsSection = () => {
 
   return (
     <>
+      <AvailableCreditBox />
       <EssayLevelOption level={level} setLevel={setLevel} />
       <EssayTypeOption level={level} type={type} setType={setType} />
       <ScoringScaleSelector
