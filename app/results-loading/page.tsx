@@ -21,10 +21,10 @@ const ResultLoadingPage = () => {
   const feedbackLoading = feedbackResults.some((query) => query.isLoading);
 
   const scoreArray = scoreResults.map(
-    (query) => query.data?.choices[0].message.content!
+    (query) => query.data?.data.choices[0].message.content!
   );
   const feedbackArray = feedbackResults.map(
-    (query) => query.data?.choices[0].message.content!
+    (query) => query.data?.data.choices[0].message.content!
   );
 
   const router = useRouter();
