@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/x-icon" href="/wirte.png" />
+        <link rel="icon" type="image/x-icon" href="/write.png" />
       </head>
       <body className={inter.className}>
         <QueryClientProvider>
