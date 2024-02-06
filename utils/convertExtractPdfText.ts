@@ -1,20 +1,21 @@
-import ConvertApi from "convertapi-js";
+import axios from "axios";
 import mammoth from "mammoth";
 
 export default async function convertExtractPdfText(file: File) {
-  let convertApi = ConvertApi.auth(process.env.NEXT_PUBLIC_CONVERT_API_SECRET!);
-  let params = convertApi.createParams();
-  params.add("File", file);
-  let result = await convertApi.convert("pdf", "docx", params);
+  const data = new FormData();
+  data.append("file", file);
+  let result = await axios.post("/api/conversion/", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 
-  const url = result.files[0].Url;
+  const url = result.data.Files[0].Url;
   try {
     const response = await fetch(url);
-
     if (!response.ok) {
       throw new Error(`Failed to fetch file from URL: ${response.statusText}`);
     }
-
     const arrayBuffer = await response.arrayBuffer();
     const textResult = await mammoth.extractRawText({ arrayBuffer });
     return textResult.value;

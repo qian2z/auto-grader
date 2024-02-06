@@ -4,7 +4,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuRoot,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
   Flex,
   Text,
@@ -19,7 +18,6 @@ import { MdLogin, MdLogout } from "react-icons/md";
 import { TfiWrite } from "react-icons/tfi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import AvailableCreditBox from "./components/AvailableCreditBox";
 
 const NavBar = () => {
   const { status, data: session } = useSession();
@@ -102,13 +100,11 @@ const AuthStatus = ({
           </Flex>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <AvailableCreditBox />
-          <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() => signOut({ callbackUrl: "/", redirect: true })}
           >
             <Flex align="center" justify="center">
-              <MdLogout className="mr-1" />
+              <MdLogout className="mr-2" />
               <Text>Sign Out</Text>
             </Flex>
           </DropdownMenuItem>
