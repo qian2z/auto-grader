@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LuType } from "react-icons/lu";
 import MultipleSubmissionsDialog from "./MultipleSubmissionDialog";
 import SubmissionTriggerCard from "./SubmissionTriggerCard";
+import { useState } from "react";
 
 const GetStartedPage = () => {
   return (
