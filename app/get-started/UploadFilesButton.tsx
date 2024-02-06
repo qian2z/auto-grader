@@ -3,11 +3,11 @@ import convertExtractPdfText from "@/utils/convertExtractPdfText";
 import { Spinner } from "@chakra-ui/react";
 import { Button, DialogClose, Flex, Kbd, Text } from "@radix-ui/themes";
 import mammoth from "mammoth";
+import Link from "next/link";
 import { useState } from "react";
 import { IoMdDoneAll } from "react-icons/io";
 import { LuFileStack } from "react-icons/lu";
 import useSubmissionsDataStore from "../submissionsStore";
-import Link from "next/link";
 
 const UploadFilesButton = () => {
   const [extractedText, setExtractedText] = useState<string[]>([]);
