@@ -35,11 +35,10 @@ const ResultCreditPage = () => {
   }, [router]);
 
   if (isLoading) return <ResultSkeleton />;
-  else {
-    if (status === 402) return <InsufficientCreditPage />;
-    else if (status === 200) router.push("/results-loading");
-    else return <RequestTimeoutErrorPage />;
-  }
+
+  if (status === 402) return <InsufficientCreditPage />;
+  else if (status === 200) router.push("/results-loading");
+  else return <RequestTimeoutErrorPage />;
 
   return <ResultSkeleton />;
 };
