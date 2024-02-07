@@ -10,6 +10,7 @@ import useSubmissionsDataStore from "../submissionsStore";
 const ResultCreditPage = () => {
   const router = useRouter();
   const [status, setStatus] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
   const storedData = useSubmissionsDataStore((s) => s.data.bodies);
 
   useEffect(() => {
@@ -33,9 +34,12 @@ const ResultCreditPage = () => {
     fetchCredit();
   }, [router]);
 
-  if (status === 402) return <InsufficientCreditPage />;
-  else if (status === 200) router.push("/results-loading");
-  else return <RequestTimeoutErrorPage />;
+  if (isLoading) return <ResultSkeleton />;
+  else {
+    if (status === 402) return <InsufficientCreditPage />;
+    else if (status === 200) router.push("/results-loading");
+    else return <RequestTimeoutErrorPage />;
+  }
 
   return <ResultSkeleton />;
 };
