@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ResultSkeleton from "../components/ResultSkeleton";
 import useSubmissionsDataStore from "../submissionsStore";
+import useResultsDataStore from "../resultsStore";
 
 const ResultCreditPage = () => {
   const router = useRouter();
   const [status, setStatus] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
   const storedData = useSubmissionsDataStore((s) => s.data.bodies);
+  const clearResult = useResultsDataStore((s) => s.clearResult);
 
   useEffect(() => {
     const fetchCredit = async () => {
@@ -33,13 +35,15 @@ const ResultCreditPage = () => {
     };
     fetchCredit();
     setIsLoading(false);
+    clearResult();
   }, [router]);
 
-  if (isLoading) return <ResultSkeleton />;
-
-  if (status === 402) return <InsufficientCreditPage />;
-  else if (status === 200) router.push("/results-loading");
-  else return <RequestTimeoutErrorPage />;
+  if (isLoading || status === 0) return <ResultSkeleton />;
+  else {
+    if (status === 402) return <InsufficientCreditPage />;
+    else if (status === 200) router.push("/results-loading");
+    else return <RequestTimeoutErrorPage />;
+  }
 
   return <ResultSkeleton />;
 };

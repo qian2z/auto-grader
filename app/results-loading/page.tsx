@@ -35,7 +35,14 @@ const ResultLoadingPage = () => {
       setFeedback(feedbackArray);
       router.push("/results-review");
     }
-  }, [scoreLoading, feedbackLoading, router]);
+  }, [
+    storedData,
+    scoreResults,
+    feedbackResults,
+    scoreLoading,
+    feedbackLoading,
+    router,
+  ]);
 
   if (scoreError || feedbackError) return <ResultErrorPage />;
 
