@@ -32,6 +32,7 @@ const ResultCreditPage = () => {
       }
     };
     fetchCredit();
+    setIsLoading(false);
   }, [router]);
 
   if (isLoading) return <ResultSkeleton />;
