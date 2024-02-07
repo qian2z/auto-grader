@@ -22,7 +22,7 @@ const SubmissionSkeleton = () => {
         <Flex direction="column" gap="5">
           <Flex align="center" justify="start" gap="1" mx="1">
             <Badge color="blue">Available Credit</Badge>
-            <Skeleton count={1} />
+            <Skeleton width="2rem" />
           </Flex>
           {selections.map((selection) => (
             <Flex direction="column" gap="1" key={selection.id}>

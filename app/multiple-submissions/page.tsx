@@ -29,7 +29,7 @@ const MultipleSubmissionPage = () => {
     event.preventDefault();
     if (titleRef.current) {
       setEssayTitle(titleRef.current.value);
-      router.push("/results-loading");
+      router.push("/results-credit");
     }
   };
 

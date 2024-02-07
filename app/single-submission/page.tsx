@@ -1,7 +1,7 @@
 "use client";
 import { Textarea } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useRef } from "react";
+import { FormEvent, useRef } from "react";
 import SubmissionLayout from "../components/SubmissionLayout";
 import useSubmissionsDataStore from "../submissionsStore";
 
@@ -22,7 +22,7 @@ const SingleSubmissionPage = () => {
       setEssayBody([bodyRef.current.value]);
       setEssayName(["Single Submission"]);
       setEssayNumber(["1"]);
-      router.push("/results-loading");
+      router.push("/results-credit");
     }
   };
 
