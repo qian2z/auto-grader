@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const user = await prisma.user.findUnique({
-      where: { username: session.user?.name! },
+      where: { email: session.user?.email! },
     });
     if (!user)
       return NextResponse.json({ error: "Invalid User." }, { status: 400 });
@@ -29,7 +29,7 @@ export async function PATCH(request: NextRequest) {
 
   try {
     const user = await prisma.user.findUnique({
-      where: { username: session.user?.name! },
+      where: { email: session.user?.email! },
     });
 
     if (!user)
@@ -46,14 +46,14 @@ export async function PATCH(request: NextRequest) {
     }
 
     const updatedUser = await prisma.user.update({
-      where: { username: session.user?.name! },
+      where: { email: session.user?.email! },
       data: {
         credit: user.credit - number,
       },
     });
 
     const response = {
-      username: updatedUser.username,
+      email: updatedUser.email,
       credit: updatedUser.credit,
     };
 

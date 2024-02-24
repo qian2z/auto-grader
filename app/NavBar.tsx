@@ -78,7 +78,7 @@ const AuthStatus = ({
     return (
       <NavLink
         link={{
-          label: "Login",
+          label: "Sign In",
           href: "/api/auth/signin",
           icon: <MdLogin />,
         }}
