@@ -28,7 +28,7 @@ const TopUpDialog = () => {
   return (
     <DialogRoot>
       <DialogTrigger>
-        <Button size="1">
+        <Button size="1" color="orange" className="custom-button">
           Top Up <BiSolidPurchaseTag />
         </Button>
       </DialogTrigger>
