@@ -56,7 +56,7 @@ export async function PATCH(request: NextRequest) {
       credit: updatedUser.credit,
     };
 
-    return NextResponse.json(response, { status: 204 });
+    return NextResponse.json(response, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
