@@ -31,7 +31,6 @@ export async function POST(request: NextRequest) {
     const result = await axiosScoreInstance.post<FetchResponse>("", res_body);
     return NextResponse.json(result.data, { status: 201 });
   } catch (error) {
-    console.error("Error in /api/score:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

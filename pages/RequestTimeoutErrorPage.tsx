@@ -4,7 +4,7 @@ import ErrorPageLayout from "@/app/components/ErrorPageLayout";
 const RequestTimeoutErrorPage = () => {
   return (
     <ErrorPageLayout
-      code="408"
+      code="504"
       name="Request Timeout"
       description="Something went wrong. Please try again."
     />
