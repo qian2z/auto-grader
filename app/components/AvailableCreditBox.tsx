@@ -34,7 +34,7 @@ const AvailableCreditBox = () => {
   return (
     <Flex direction="column" gap="2">
       <Flex align="center" justify="start" gap="1" mx="1">
-        <Badge color="blue">Available Credit</Badge>
+        <Badge color="orange">Available Credit</Badge>
         {isLoading ? (
           <Skeleton width="2rem" />
         ) : (
