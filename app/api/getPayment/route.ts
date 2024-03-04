@@ -41,12 +41,11 @@ export async function POST(request: NextRequest) {
         credit: updatedUser.credit,
       };
 
-      return NextResponse.json(response, { status: 204 });
+      return NextResponse.json(response, { status: 200 });
     } else {
       return NextResponse.json("Payment Unsuccessful", { status: 402 });
     }
   } catch (error) {
-    console.log(error);
     return NextResponse.json("Internal Server Error", {
       status: 500,
     });
