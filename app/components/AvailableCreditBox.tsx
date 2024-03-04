@@ -11,6 +11,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { IoMdInformationCircle } from "react-icons/io";
 import Skeleton from "react-loading-skeleton";
+import TopUpDialog from "./TopUpDialog";
 
 const AvailableCreditBox = () => {
   const [credit, setCredit] = useState<number | undefined>(0);
@@ -37,9 +38,12 @@ const AvailableCreditBox = () => {
         {isLoading ? (
           <Skeleton width="2rem" />
         ) : (
-          <Text size="3" weight="bold">
-            {credit}
-          </Text>
+          <>
+            <Text size="3" weight="bold">
+              {credit}
+            </Text>
+            <TopUpDialog />
+          </>
         )}
       </Flex>
       {!isLoading && credit === 0 && (
