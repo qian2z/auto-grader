@@ -1,4 +1,5 @@
 "use client";
+import PaymentSuccessfulPage from "@/pages/PaymentSuccessfulPage";
 import RequestTimeoutErrorPage from "@/pages/RequestTimeoutErrorPage";
 import axios from "axios";
 import { useEffect } from "react";
@@ -23,7 +24,7 @@ const PaymentSuccessful = () => {
     }
   }, [sessionId]);
 
-  return <div>PaymentSuccessful</div>;
+  return <PaymentSuccessfulPage />;
 };
 
 export default PaymentSuccessful;

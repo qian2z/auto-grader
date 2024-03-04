@@ -4,8 +4,8 @@ import qs from "qs";
 
 export async function POST(request: NextRequest) {
   const data = qs.stringify({
-    success_url:
-      "http://localhost:3000/payment-successful?sessionId={CHECKOUT_SESSION_ID}",
+    success_url: `${process.env.NEXTAUTH_URL}/payment-successful?sessionId={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${process.env.NEXTAUTH_URL}`,
     "line_items[0][price]": process.env.NEXT_PUBLIC_STRIPE_PRICE_ID,
     "line_items[0][quantity]": 1,
     mode: "payment",
