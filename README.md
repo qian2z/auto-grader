@@ -23,6 +23,7 @@ Auto Grader is a web application designed as a final year project for my BSc (Ho
 - Next Auth
 - Zustand
 - Prisma
+- AWS RDS
 
 ## Getting Started
 1. Clone the repository.
