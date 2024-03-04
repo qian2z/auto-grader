@@ -18,7 +18,6 @@ const PaymentSuccessful = () => {
         return <RequestTimeoutErrorPage />;
       }
     };
-    console.log(sessionId);
     if (sessionId) {
       fetchSession();
     }

@@ -57,3 +57,8 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Payment {
+  id        String @id @unique
+  userEmail String
+}

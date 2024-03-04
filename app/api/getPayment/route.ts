@@ -17,6 +17,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid User" }, { status: 400 });
 
     const body = await request.json();
+
+    const payment = await prisma?.payment.findUnique({
+      where: { id: body.id },
+    });
+
+    if (payment) {
+      return NextResponse.json("Payment Completed", { status: 200 });
+    }
+
     const response = await axios.get(
       "https://api.stripe.com/v1/checkout/sessions/" + body.id,
       {
@@ -36,7 +45,15 @@ export async function POST(request: NextRequest) {
         },
       });
 
+      const newPayment = await prisma?.payment.create({
+        data: {
+          id: body.id,
+          userEmail: session.user?.email!,
+        },
+      });
+
       const response = {
+        payment: newPayment.id,
         email: updatedUser.email,
         credit: updatedUser.credit,
       };
