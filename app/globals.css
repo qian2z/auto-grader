@@ -23,8 +23,3 @@ body {
     @apply text-zinc-500 p-2 font-medium rounded-md hover:text-zinc-800 transition-colors;
   }
 }
-
-button.custom-button {
-  -webkit-appearance: button;
-  background-image: none;
-}
