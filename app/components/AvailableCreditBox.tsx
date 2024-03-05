@@ -38,14 +38,9 @@ const AvailableCreditBox = () => {
         {isLoading ? (
           <Skeleton width="2rem" />
         ) : (
-          <>
-            <Text size="3" weight="bold">
-              {credit}
-            </Text>
-            <Flex>
-              <TopUpDialog />
-            </Flex>
-          </>
+          <Text size="3" weight="bold">
+            {credit}
+          </Text>
         )}
       </Flex>
       {!isLoading && credit === 0 && (
@@ -58,6 +53,9 @@ const AvailableCreditBox = () => {
           </CalloutRoot>
         </Flex>
       )}
+      <Flex mx="1">
+        <TopUpDialog />
+      </Flex>
     </Flex>
   );
 };
