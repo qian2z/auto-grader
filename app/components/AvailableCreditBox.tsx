@@ -1,10 +1,10 @@
 import RequestTimeoutErrorPage from "@/pages/RequestTimeoutErrorPage";
 import {
-  Badge,
   CalloutIcon,
   CalloutRoot,
   CalloutText,
   Flex,
+  Kbd,
   Text,
 } from "@radix-ui/themes";
 import axios from "axios";
@@ -34,13 +34,16 @@ const AvailableCreditBox = () => {
   return (
     <Flex direction="column" gap="2">
       <Flex align="center" justify="start" gap="2" mx="1">
-        <Badge color="green">Available Credit</Badge>
+        <Kbd size="3">Available Credits</Kbd>
         {isLoading ? (
           <Skeleton width="2rem" />
         ) : (
-          <Text size="3" weight="bold">
-            {credit}
-          </Text>
+          <>
+            <Text size="3" weight="bold">
+              {credit}
+            </Text>
+            <TopUpDialog />
+          </>
         )}
       </Flex>
       {!isLoading && credit === 0 && (
@@ -53,9 +56,6 @@ const AvailableCreditBox = () => {
           </CalloutRoot>
         </Flex>
       )}
-      <Flex mx="1">
-        <TopUpDialog />
-      </Flex>
     </Flex>
   );
 };

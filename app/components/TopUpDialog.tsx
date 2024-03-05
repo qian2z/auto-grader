@@ -10,6 +10,7 @@ import {
   DialogTrigger,
   Flex,
   Strong,
+  Text,
 } from "@radix-ui/themes";
 import axios from "axios";
 import { BiSolidPurchaseTag } from "react-icons/bi";
@@ -28,9 +29,10 @@ const TopUpDialog = () => {
   return (
     <DialogRoot>
       <DialogTrigger>
-        <Button size="2" color="sky" variant="classic">
-          Top Up <BiSolidPurchaseTag />
-        </Button>
+        <Badge color="amber" variant="solid">
+          <Text size="2">Top Up</Text>
+          <BiSolidPurchaseTag />
+        </Badge>
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Top Up Credits</DialogTitle>
