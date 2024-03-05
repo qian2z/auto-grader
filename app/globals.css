@@ -1,5 +1,7 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "@radix-ui/themes/styles.css";
+
 @tailwind utilities;
 
 :root {

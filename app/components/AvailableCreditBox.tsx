@@ -1,10 +1,10 @@
 import RequestTimeoutErrorPage from "@/pages/RequestTimeoutErrorPage";
 import {
+  Badge,
   CalloutIcon,
   CalloutRoot,
   CalloutText,
   Flex,
-  Kbd,
   Text,
 } from "@radix-ui/themes";
 import axios from "axios";
@@ -34,7 +34,7 @@ const AvailableCreditBox = () => {
   return (
     <Flex direction="column" gap="2">
       <Flex align="center" justify="start" gap="2" mx="1">
-        <Kbd size="3">Available Credits</Kbd>
+        <Badge color="green">Available Credits</Badge>
         {isLoading ? (
           <Skeleton width="2rem" />
         ) : (
