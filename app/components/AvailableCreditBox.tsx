@@ -33,8 +33,8 @@ const AvailableCreditBox = () => {
 
   return (
     <Flex direction="column" gap="2">
-      <Flex align="center" justify="start" gap="1" mx="1">
-        <Badge color="orange">Available Credit</Badge>
+      <Flex align="center" justify="start" gap="2" mx="1">
+        <Badge color="green">Available Credit</Badge>
         {isLoading ? (
           <Skeleton width="2rem" />
         ) : (
@@ -42,12 +42,14 @@ const AvailableCreditBox = () => {
             <Text size="3" weight="bold">
               {credit}
             </Text>
-            <TopUpDialog />
+            <Flex>
+              <TopUpDialog />
+            </Flex>
           </>
         )}
       </Flex>
       {!isLoading && credit === 0 && (
-        <Flex>
+        <Flex mx="1">
           <CalloutRoot color="red" size="1">
             <CalloutIcon>
               <IoMdInformationCircle />

@@ -28,7 +28,7 @@ const TopUpDialog = () => {
   return (
     <DialogRoot>
       <DialogTrigger>
-        <Button size="2" color="sky" variant="classic">
+        <Button type="button" size="1" color="red" variant="solid">
           Top Up <BiSolidPurchaseTag />
         </Button>
       </DialogTrigger>
@@ -39,10 +39,10 @@ const TopUpDialog = () => {
             <Flex justify="between" align="center" width="100%">
               <Strong>30 Credits</Strong>
               <Flex justify="between" align="center" gap="3">
-                <Badge size="2" color="red" variant="solid">
+                <Badge size="2" color="amber" variant="solid">
                   <Strong>RM 2.99</Strong>
                 </Badge>
-                <Button size="2" onClick={handlePaymentClick} variant="surface">
+                <Button size="2" onClick={handlePaymentClick} variant="classic">
                   Buy <FaCartPlus />
                 </Button>
               </Flex>
