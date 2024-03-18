@@ -127,8 +127,8 @@ export const essay_types: {
       value: "advantage / disadvantage",
     },
     {
-      label: "Direction Question",
-      value: "direction question",
+      label: "Direct Question",
+      value: "direct question",
     },
     {
       label: "Solution",
@@ -155,8 +155,8 @@ export const essay_types: {
       value: "advantage / disadvantage",
     },
     {
-      label: "Direction Question",
-      value: "direction question",
+      label: "Direct Question",
+      value: "direct question",
     },
     {
       label: "Solution",
