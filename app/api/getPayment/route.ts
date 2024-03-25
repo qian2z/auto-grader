@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json(response, { status: 200 });
     } else {
-      return NextResponse.json("Payment Unsuccessful", { status: 402 });
+      return NextResponse.json("Payment Required", { status: 402 });
     }
   } catch (error) {
     return NextResponse.json("Internal Server Error", {
