@@ -5,7 +5,7 @@ export const config = {
     "/get-started",
     "/single-submission",
     "/multiple-submissions",
-    "results-credit",
+    "/results-credit",
     "/results-loading",
     "/results-review",
     "/payment-successful",
