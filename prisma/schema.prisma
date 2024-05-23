@@ -47,7 +47,7 @@ model User {
   image          String?
   accounts       Account[]
   sessions       Session[]
-  credit         Int       @default(1)
+  credit         Int       @default(10)
 }
 
 model VerificationToken {
